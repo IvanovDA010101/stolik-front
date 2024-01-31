@@ -1,7 +1,7 @@
 import {Switchers} from "../FunctionalComponents/Switchers";
 import {EstablishmentList} from "../FunctionalComponents/EstablishmentList";
 import {useState} from "react";
-import {StyledMainPlace} from "../StyledComponents/StyledMainPlace";
+import {StyledMainPlace} from "../Styles/StyledComponents";
 
 export const MainPlace = () => {
 
@@ -14,7 +14,7 @@ export const MainPlace = () => {
     const establishments = ["Первый", "Второй","Третий"];
     return (
         <StyledMainPlace>
-            <Switchers   options={["рестораны", "бары", "клубы" ]}
+            <Switchers   options={["рестораны", "бары", "кафе" ]}
                          selectedOption={{selectedOption}}
                          onOptionSelect={handleOptionSelect}/>
             <EstablishmentList establishments={establishments}/>
