@@ -12,7 +12,7 @@ export const StyledMainPlace = styled.div`
     width: 98%;
     display: flex;
     margin-bottom: 263px;
-    
+
     //display: grid;
     //grid-template-rows: auto auto; /* 2 строки */
     //border: 2px solid black; /* черная рамка */
@@ -23,11 +23,11 @@ export const StyledMainPlace = styled.div`
 
 export const StyledEstablishmentList = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     place-content: center;
     grid-template-rows: auto auto; /* 2 строки */
     border-radius: 5px;
-    background:  #FFF;
+    background: #FFF;
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
 `
 
@@ -40,19 +40,23 @@ export const StyledComponents = styled.div`
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.15);
 `
 export const StyledButton = styled.button`
-    background-color: #D9D9D9;
-    color: #333333;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
+    background-color: transparent;
+    border: none;
     font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px;
+    font-size: 18px;
+    color: #7F7F7F;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        background-color: #F2F2F2;
+        color: #4A4A4A;
+    }
+
     //width: 166px;
     //height: 52px;
     //padding: 10px 20px 10px 20px;
@@ -89,9 +93,8 @@ export const StyledHeader = styled.nav`
     //padding-right: var(--page-side-paddings);
     padding-top: 4px;
     position: relative;
-    
-    
-    
+
+
     //background-color: #FFFFFF;
     //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     //border-radius: 5px;
@@ -128,35 +131,46 @@ export const SignButtons = styled.div`
     margin: -2px;
     overflow: hidden;
     padding: 2px;
-    margin-left: auto; 
+    margin-left: auto;
 `
 
 export const SignButton = styled.button`
-    background-color: #D9D9D9;
-    color: #333333;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
+    background-color: transparent;
+    border: none;
     font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px;
+    font-size: 18px;
+    //color: #7F7F7F;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #FFC107;
+    color: #FFFFFF;
+
+
+    &:hover {
+        color: #555;
+        background-color: #f0f0f0;
+    }
 `
 
 export const HeaderButton = styled.button`
-    background-color: #D9D9D9;
-    color: #333333;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
+    background-color: transparent;
+    border: none;
     font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px;
+    font-size: 18px;
+    color: #7F7F7F;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        background-color: #F5F5F5;
+        color: #333333;
+    }
 `
