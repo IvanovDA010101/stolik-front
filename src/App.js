@@ -1,10 +1,15 @@
 import './App.css';
 import {Main} from "./Components/MainWindow/Main";
+import {Route, Routes} from "react-router";
+import {RestaurantPageMain} from "./Components/RestaurantPage/RestaurantPageMain";
 
 function App() {
   return (
     <div className="App">
-     <Main/>
+        <Routes>
+        <Route path="/" element={<Main/>}/>
+        <Route path="/restaurant" element={<RestaurantPageMain/>}/>
+        </Routes>
     </div>
   );
 }
