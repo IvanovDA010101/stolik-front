@@ -2,6 +2,7 @@ import {Switchers} from "../FunctionalComponents/Switchers";
 import {EstablishmentList} from "../FunctionalComponents/EstablishmentList";
 import {useState} from "react";
 import {StyledMainPlace} from "../Styles/StyledComponents";
+import {Link} from "react-router-dom";
 
 export const MainPlace = () => {
 
@@ -17,7 +18,9 @@ export const MainPlace = () => {
             <Switchers   options={["рестораны", "бары", "кафе" ]}
                          selectedOption={{selectedOption}}
                          onOptionSelect={handleOptionSelect}/>
+            <Link to={"/restaurant"}>
             <EstablishmentList establishments={establishments}/>
+            </Link>
         </StyledMainPlace>
     )
 }

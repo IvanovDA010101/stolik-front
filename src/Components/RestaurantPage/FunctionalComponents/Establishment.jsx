@@ -1,6 +1,6 @@
 import {StyledComponents, StyledEstablishmentList} from "../Styles/StyledComponents";
 
-export const EstablishmentList = ({ establishments }) => {
+export const Establishment = ({ establishment }) => {
     const estMock ={
         id: 1,
         name: "name",
@@ -9,21 +9,16 @@ export const EstablishmentList = ({ establishments }) => {
         description: "description",
         address: "address"
     }
-    for (let i = 0; i < 9; i++) { // выведет 0, затем 1, затем 2
-        estMock.id=i
-        establishments = establishments.concat(estMock)
-    }
+    establishment = estMock
     // establishments
     return (
         <StyledEstablishmentList>
-            {establishments.map((establishment) => (
                 <StyledComponents key={establishment.id}>
                     <img src={establishment.imageUrl} alt={establishment.name} />
                     <p>{establishment.name}</p>
                     <p>{establishment.description}</p>
                     <p>{establishment.address}</p>
                 </StyledComponents>
-            ))}
         </StyledEstablishmentList>
     );
 }
