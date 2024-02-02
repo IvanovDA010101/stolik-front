@@ -174,3 +174,11 @@ export const HeaderButton = styled.button`
         color: #333333;
     }
 `
+
+export const RestaurantInfo = styled.div`
+    width: 1060px;
+    height: 946px;
+    flex-shrink: 0;
+    fill: #FFF;
+    filter: drop-shadow(0px 0px 16px rgba(0, 0, 0, 0.08));
+`
