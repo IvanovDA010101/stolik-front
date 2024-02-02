@@ -1,8 +1,8 @@
-import {Establishment} from "../FunctionalComponents/Establishment";
 import {useState} from "react";
-import {StyledMainPlace} from "../Styles/StyledComponents";
+import {Restaurant} from "../Styles/StyledComponents";
+import {Establishment} from "../FunctionalComponents/Establishment";
 
-export const MainPlace = (id) => {
+export const MainPlace = () => {
 
     const [selectedOption, setSelectedOption] = useState("рестораны");
 
@@ -12,8 +12,6 @@ export const MainPlace = (id) => {
 
     const establishments = ["Первый", "Второй","Третий"];
     return (
-        <StyledMainPlace>
             <Establishment />
-        </StyledMainPlace>
     )
 }

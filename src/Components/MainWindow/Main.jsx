@@ -1,4 +1,3 @@
-import {Header} from "./Viewers/Header";
 import {MainPlace} from "./Viewers/MainPlace";
 import {Filter} from "./Viewers/Filter";
 import {EstablishmentsMap} from "./Viewers/EstablishmentsMap";
@@ -8,7 +7,6 @@ export const Main = () => {
 
     return (
         <div>
-            <Header/>
             <MainPlace/>
             <Filter/>
             <EstablishmentsMap/>

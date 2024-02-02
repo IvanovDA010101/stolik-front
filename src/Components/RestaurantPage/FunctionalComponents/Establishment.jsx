@@ -1,4 +1,4 @@
-import {RestaurantInfo, StyledComponents} from "../Styles/StyledComponents";
+import {BookingButton, Restaurant, RestaurantInfo, StyledComponents, StyledImage} from "../Styles/StyledComponents";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router";
 
@@ -32,11 +32,16 @@ export const Establishment = () => {
 
 
     return (
-        <RestaurantInfo key={establishment.id}>
-            <img src={establishment.url} alt={establishment.name}/>
-            <p>{establishment.name}</p>
-            <p>{establishment.description}</p>
-            <p>{establishment.address}</p>
-        </RestaurantInfo>
+        <>
+        <Restaurant key={establishment.id}>
+            <StyledImage src={establishment.url} alt={establishment.name}/>
+            <RestaurantInfo>
+                <p>{establishment.name}</p>
+                <p>{establishment.description}</p>
+                <p>{establishment.address}</p>
+                <BookingButton>Забронировать</BookingButton>
+            </RestaurantInfo>
+        </Restaurant>
+        </>
     );
 }
