@@ -16,20 +16,17 @@ const Footer = () => {
         <StyledFooter>
             <div style={{display:"flex", flexDirection:"column", alignItems:"center", textAlign:'center'}}>
             <div>
-                <h2 style={{color:"orange"}}>Table<span style={{color:"yellow"}}>Book</span></h2>
+                <h2 style={{color:"orange"}}>Reserve<span style={{color:"yellow"}}>Easy</span></h2>
             </div>
             <div>
                 <ul style={{display: "flex", gap:"20px", listStyle:"none", cursor:"pointer"}}>
-                    <a >Services</a>
-                    <a>About us</a>
-                    <a>Contact us</a>
-                    <a>Faqs</a>
-                    <a>Sign in</a>
+                    <a>{textMain}</a>
+                    <a>{textAboutMe}</a>
                 </ul>
             </div>
                 <div style={{display: "flex", justifyContent: "space-between", alignItems:"center", gap: "20px"}}>
                     <div>
-                        <img src="./iamge.jpg"/>
+                        <img/>
                     </div>
                     <div>
                         <img/>
