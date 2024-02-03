@@ -1,6 +1,7 @@
-import {BookingButton, Restaurant, RestaurantInfo, StyledComponents, StyledImage} from "../Styles/StyledComponents";
+import {BookingButton, Restaurant, RestaurantInfo, StyledImage} from "../Styles/StyledComponents";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router";
+import {ReactSVG} from "react-svg";
 
 export const Establishment = () => {
     const [establishment, setEstablishment] = useState([]);
@@ -30,18 +31,44 @@ export const Establishment = () => {
         fetchData()
     }, [])
 
+    const handleHover = (e) => {
+        e.target.style.stroke = "red"; // Изменение цвета обводки при наведении мыши
+    };
 
+    const handleClick = (e) => {
+        alert("Вы кликнули на элемент с ID: ${e.target.id}"); // Добавление обработчика тегов для кликов по элементам SVG
+    };
     return (
         <>
-        <Restaurant key={establishment.id}>
-            <StyledImage src={establishment.url} alt={establishment.name}/>
-            <RestaurantInfo>
-                <p>{establishment.name}</p>
-                <p>{establishment.description}</p>
-                <p>{establishment.address}</p>
-                <BookingButton>Забронировать</BookingButton>
-            </RestaurantInfo>
-        </Restaurant>
+            <Restaurant key={establishment.id}>
+                <StyledImage src={establishment.url} alt={establishment.name}/>
+                <RestaurantInfo>
+                    <p>{establishment.name}</p>
+                    <p>{establishment.description}</p>
+                    <p>{establishment.address}</p>
+                    <BookingButton>Забронировать</BookingButton>
+                </RestaurantInfo>
+                <ReactSVG src="/images/SchemePlace.svg"
+                          afterInjection={(svg, error) => { // Добавление обработчика после вставки SVG
+                              if (error) {
+                                  console.error('Ошибка загрузки SVG:', error);
+                                  return;
+                              }
+                              const paths = svg.getElementsByTagName('rect'); // Получение всех элементов <rect>
+                              Array.from(paths).forEach(rect => {
+                                  rect.onmouseover = handleHover; // Добавление обработчика события наведения мыши
+                                  rect.onmouseleave = (e) => {
+                                      e.target.style.stroke = '';
+                                  }; // Удаление подсветки при отводе мыши
+                                  rect.onclick = handleClick; // Добавление обработчика клика
+                              });
+                          }}
+                />
+                // {/*<div*/}
+                {/*    dangerouslySetInnerHTML={{__html: svgContent}}*/}
+                {/*    throwIfNamespace={false}*/}
+                {/*/>*/}
+            </Restaurant>
         </>
     );
 }
