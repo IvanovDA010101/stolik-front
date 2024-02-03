@@ -1,99 +1,314 @@
-import {useEffect, useRef} from 'react';
+// import '../App.css';
 import * as fabric from 'fabric';
+import {useEffect, useRef} from "react";
 
-const grid = 30
-const lineStroke = '#000000'
+//тестовая отрисовка схемы зала админа
+export const MyFabricComponent = () => {
+    let canvas = useRef(null);
+    let canvasEl = useRef(null);
+    let objId = useRef(1);
 
-function createTable(canvas) {
-    console.log(canvas.height / grid);
-
-    for (let i = 0; i < (canvas.height / grid); i++) {
-        const lineX = new fabric.Line([0, i * grid, canvas.height, i * grid], {
-            stroke: lineStroke,
-            selectable: false,
-            type: 'line',
-            fill:'black'
-        })
-        const lineY = new fabric.Line([i * grid, 0, i * grid, canvas.height], {
-            stroke: lineStroke,
-            selectable: false,
-            type: 'line'
-        })
-        // canvas = sendLinesToBack(canvas)
-        canvas.add(lineX)
-        canvas.add(lineY)
-        // return canvas
-    }
-}
-
-function sendLinesToBack(canvas) {
-    canvas.getObjects().map(o => {
-        if (o.type === 'line') {
-            canvas.sendToBack(o)
-        }
-    })
-    return canvas
-}
-
-export const MyFabricComponent: React.FC = () => {
-    const canvasEl = useRef();
-    const fabricIns = useRef(null);
+    const grid = 30;
+    const width = grid * 30;
+    const height = grid * 30;
+    const backgroundColor = '#f8f8f8';
+    const lineStroke = '#ebebeb';
+    const tableFill = 'rgba(150, 111, 51, 0.7)';
+    const tableStroke = '#694d23';
+    const tableShadow = 'rgba(0, 0, 0, 0.4) 3px 3px 7px';
+    const chairFill = 'rgba(67, 42, 4, 0.7)';
+    const chairStroke = '#32230b';
+    const chairShadow = 'rgba(0, 0, 0, 0.4) 3px 3px 7px';
+    const textOptions = {
+        fontFamily: 'Calibri',
+        fontSize: 14,
+        fill: '#fff',
+        textAlign: 'center',
+        originX: 'center',
+        originY: 'center'
+    };
+    const gOptions = {
+        left: 0,
+        top: 0,
+        centeredRotation: true,
+        snapAngle: 45,
+        selectable: true,
+        type: 'table',
+        id: objId.current,
+        number: objId.current
+    };
 
     useEffect(() => {
-        console.log('mounted');
-
-        if (canvasEl.current && !fabricIns.current) {
-            fabricIns.current = new fabric.Canvas(canvasEl.current, {
-                width: 800,
-                height: 800,
-                selection: true
-
+        console.log('start');
+        if (canvasEl.current) {
+            canvas.current = new fabric.Canvas(canvasEl.current, {
+                width: width,
+                height: height,
+                backgroundColor: backgroundColor,
+                preserveObjectStacking: true,
+                selection: true,
             });
-            const canvas = fabricIns.current;
-            console.log(canvasEl, canvas);
 
-            for (let i = 0; i < (canvas.height / grid); i++) {
-                const lineX = new fabric.Line([0, i * grid, canvas.height, i * grid], {
-                    stroke: lineStroke,
-                    selectable: false,
-                    type: 'line',
-                    fill:'black'
-                })
-                const lineY = new fabric.Line([i * grid, 0, i * grid, canvas.height], {
+            for (let i = 0; i < (canvas.current.height / grid); i++) {
+                const lineX = new fabric.Line([0, i * grid, canvas.current.height, i * grid], {
                     stroke: lineStroke,
                     selectable: false,
                     type: 'line'
-                })
-                // canvas = sendLinesToBack(canvas)
-                canvas.add(lineX)
-                canvas.add(lineY)
-                // return canvas
+                });
+                const lineY = new fabric.Line([i * grid, 0, i * grid, canvas.current.height], {
+                    stroke: lineStroke,
+                    selectable: false,
+                    type: 'line'
+                });
+                sendLinesToBack();
+                canvas.current.add(lineX);
+                canvas.current.add(lineY);
             }
 
-            // createTable(canvas)
+            canvas.current.on('object:moving', function (e) {
+                snapToGrid(e.target);
+            });
 
-            canvas.add(new fabric.Rect({width: 50, height: 50, fill: 'red'})); // Example: adding a rectangle
-            canvas.add(new fabric.Rect({width: 20, height: 20, fill: 'black'})); // Example: adding a rectangle
-            canvas.add(new fabric.Rect({width: 10, height: 10, fill: 'green'})); // Example: adding a rectangle
-            canvas.add(new fabric.Rect({width: 10, height: 10, fill: 'green'})); // Example: adding a rectangle
+            canvas.current.on('object:scaling', function (e) {
+                if (e.target.scaleX > 5) {
+                    e.target.scaleX = 5;
+                }
+                if (e.target.scaleY > 5) {
+                    e.target.scaleY = 5;
+                }
+                if (!e.target.strokeWidthUnscaled && e.target.strokeWidth) {
+                    e.target.strokeWidthUnscaled = e.target.strokeWidth;
+                }
+                if (e.target.strokeWidthUnscaled) {
+                    e.target.strokeWidth = e.target.strokeWidthUnscaled / e.target.scaleX;
+                    if (e.target.strokeWidth === e.target.strokeWidthUnscaled) {
+                        e.target.strokeWidth = e.target.strokeWidthUnscaled / e.target.scaleY;
+                    }
+                }
+            });
 
-            const lineX = new fabric.Line([0, 100, canvas.height, 200], {
-                stroke: lineStroke,
-                selectable: false,
-                type: 'line',
-                fill:'black'
-            })
-            canvas.add(lineX);
 
-            const json = JSON.stringify(canvas)
-            console.log(json)
 
-            return () => {
-                // canvas.destroy();
-            }
+            canvas.current.on('object:modified', function (e) {
+                e.target.scaleX = e.target.scaleX >= 0.25 ? (Math.round(e.target.scaleX * 2) / 2) : 0.5;
+                e.target.scaleY = e.target.scaleY >= 0.25 ? (Math.round(e.target.scaleY * 2) / 2) : 0.5;
+                snapToGrid(e.target);
+                if (e.target.type === 'table') {
+                    canvas.current.bringToFront(e.target);
+                } else {
+                    canvas.current.sendToBack(e.target);
+                }
+                sendLinesToBack();
+            });
+
+            canvas.current.on('object:moving', function (e) {
+                checkBoundingBox(e);
+            });
+            canvas.current.on('object:rotating', function (e) {
+                checkBoundingBox(e);
+            });
+            canvas.current.on('object:scaling', function (e) {
+                checkBoundingBox(e);
+            });
+
+            // canvas.current.add(new fabric.Rect({width: 60, height: 60, fill: 'red', selectable: true}));
+
+            addRect();
         }
-    }, []);
+    }, [canvas, width, height]);
 
+    function addRect() {
+        const o = new fabric.Rect({
+            width: 60,
+            height: 60,
+            fill: tableFill,
+            stroke: tableStroke,
+            strokeWidth: 2,
+            shadow: tableShadow,
+            originX: 'center',
+            originY: 'center',
+            centeredRotation: true,
+            snapAngle: 45
+        });
+        const t = new fabric.IText(objId.current.toString(), textOptions);
+        const g = new fabric.Group([o, t], gOptions);
+        canvas.current.add(g);
+        canvas.current.requestRenderAll();
+        canvas.current.setActiveObject(o);
+        objId.current++;
+        return g;
+    }
 
-    return <canvas id="canvas" ref={canvasEl}/>;
-};
+    function addCircle() {
+        const o = new fabric.Circle({
+            radius: 60,
+            fill: tableFill,
+            stroke: tableStroke,
+            strokeWidth: 2,
+            shadow: tableShadow,
+            originX: 'center',
+            originY: 'center',
+            centeredRotation: true
+        });
+        const t = new fabric.IText(objId.current.toString(), textOptions);
+        const g = new fabric.Group([o, t], gOptions);
+        canvas.current.add(g);
+        canvas.current.requestRenderAll();
+        canvas.current.setActiveObject(o);
+        objId.current++;
+        return g;
+    }
+
+    function addChair() {
+        const o = new fabric.Rect({
+            left: 0,
+            top: 0,
+            width: 30,
+            height: 30,
+            fill: chairFill,
+            stroke: chairStroke,
+            strokeWidth: 2,
+            shadow: chairShadow,
+            originX: 'left',
+            originY: 'top',
+            centeredRotation: true,
+            snapAngle: 45,
+            selectable: true,
+            type: 'chair',
+            id: objId.current
+        });
+        canvas.current.add(o);
+        canvas.current.requestRenderAll();
+        canvas.current.setActiveObject(o);
+        return o;
+    }
+
+    function snapToGrid(target) {
+        target.set({
+            left: Math.round(target.left / (grid / 2)) * grid / 2,
+            top: Math.round(target.top / (grid / 2)) * grid / 2
+        });
+    }
+
+    function checkBoundingBox(e) {
+        const obj = e.target;
+
+        if (!obj) {
+            return;
+        }
+        obj.setCoords();
+
+        const objBoundingBox = obj.getBoundingRect();
+        if (objBoundingBox.top < 0) {
+            obj.set('top', 0);
+            obj.setCoords();
+        }
+        if (objBoundingBox.left > canvas.current.width - objBoundingBox.width) {
+            obj.set('left', canvas.current.width - objBoundingBox.width);
+            obj.setCoords();
+        }
+        if (objBoundingBox.top > canvas.current.height - objBoundingBox.height) {
+            obj.set('top', canvas.current.height - objBoundingBox.height);
+            obj.setCoords();
+        }
+        if (objBoundingBox.left < 0) {
+            obj.set('left', 0);
+            obj.setCoords();
+        }
+    }
+
+    function sendLinesToBack() {
+        canvas.current.getObjects().forEach(o => {
+            if (o.type === 'line') {
+                canvas.current.sendToBack(o);
+            }
+        });
+    }
+
+    function clickOnRemove() {
+        const o = canvas.current.getActiveObject();
+        if (o) {
+            o?.remove();
+            canvas.current.remove(o);
+            canvas.current.discardActiveObject();
+            canvas.current.renderAll();
+        }
+    }
+
+    function clickOnCustomer() {
+        canvas.current.getObjects().forEach(o => {
+            o.hasControls = false;
+            o.lockMovementX = true;
+            o.lockMovementY = true;
+            if (o.type === 'chair' || o.type === 'bar' || o.type === 'wall') {
+                o.selectable = false;
+            }
+            o.borderColor = '#38A62E';
+            o.borderScaleFactor = 2.5;
+        });
+        // setCanvas(initCanvas(false))
+        canvas.current.selection = false;
+        canvas.current.hoverCursor = 'pointer';
+        canvas.current.discardActiveObject();
+        canvas.current.renderAll();
+        document.querySelectorAll('.admin-menu')[0].style.display = 'none';
+        document.querySelectorAll('.customer-menu')[0].style.display = 'block';
+    }
+
+    function clickOnAdmin() {
+        canvas.current.getObjects().forEach(o => {
+            o.hasControls = true;
+            o.lockMovementX = false;
+            o.lockMovementY = false;
+            if (o.type === 'chair' || o.type === 'bar' || o.type === 'wall') {
+                o.selectable = true;
+            }
+            o.borderColor = 'rgba(102, 153, 255, 0.75)';
+            o.borderScaleFactor = 1;
+        });
+        canvas.current.selection = true;
+        canvas.current.hoverCursor = 'move';
+        canvas.current.discardActiveObject();
+        canvas.current.renderAll();
+        document.querySelectorAll('.admin-menu')[0].style.display = 'block';
+        document.querySelectorAll('.customer-menu')[0].style.display = 'none';
+    }
+
+    function getObjects() {
+        canvas.current.getObjects().forEach(o => {
+            if (o.type !== 'line') {
+                canvas.current.bringToFront(o)
+                console.log(o);
+            }
+        });
+    }
+
+    return (
+        <div className="container-fluid text-center">
+            <div className="form-group admin-menu">
+                <div className="btn-group">
+                    <button onClick={addRect}>+ Rect table</button>
+                    <button onClick={addCircle}>+ Circle table</button>
+                    <button onClick={addChair}>+ Chair</button>
+                    <button onClick={clickOnRemove}>Remove</button>
+                    <button onClick={clickOnCustomer}>Customer mode</button>
+                    <button onClick={getObjects}>check</button>
+                </div>
+            </div>
+
+            <div className="form-group customer-menu" style={{display: "none"}}>
+                <div className="btn-group">
+                    <button className="btn btn-success submit">Submit reservation</button>
+                    <button className="btn btn-warning admin-mode" onClick={clickOnAdmin}>Admin mode</button>
+                </div>
+                <br/>
+                <br/>
+                <div id="slider"></div>
+                <div id="slider-value"></div>
+            </div>
+
+            <canvas ref={canvasEl}></canvas>
+        </div>
+    );
+}
+
