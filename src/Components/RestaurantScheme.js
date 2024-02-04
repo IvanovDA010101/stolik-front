@@ -35,7 +35,8 @@ export const MyFabricComponent = () => {
     selectable: true,
     type: 'table',
     id: objId.current,
-    number: objId.current
+    number: objId.current,
+    idRect: objId
   };
 
   useEffect(() => {
@@ -129,7 +130,8 @@ export const MyFabricComponent = () => {
       originX: 'center',
       originY: 'center',
       centeredRotation: true,
-      snapAngle: 45
+      snapAngle: 45,
+      idInDB: objId.current.toString()
     });
     const t = new fabric.IText(objId.current.toString(), textOptions);
     const g = new fabric.Group([o, t], gOptions);
@@ -282,6 +284,39 @@ export const MyFabricComponent = () => {
     });
   }
 
+  const sendDataToBackend = async (json) => {
+    try {
+      const response = await fetch('http://reserveeasy.ru:8080/api/v1/restaurants/1/tables', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Указываем тип контента как JSON
+          'accept': '*/*'
+        },
+        body: json
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      console.log(data);
+      // Возможно, здесь вам захочется что-то делать с возвращенными данными
+    } catch (error) {
+      console.error('Error sending data to the backend:', error);
+    }
+  };
+  const handleSaveButton = () => {
+    // Преобразуем canvas.current в JSON
+    const jsonData = JSON.stringify(canvas.current);
+    const fileJson = {
+      file : jsonData
+    }
+    // Отправляем данные на бэкенд
+    sendDataToBackend(JSON.stringify(fileJson));
+  };
+
+
   return (
     <div className="container-fluid text-center">
       <div className="form-group admin-menu">
@@ -297,7 +332,7 @@ export const MyFabricComponent = () => {
 
       <div className="form-group customer-menu" style={{display: "none"}}>
         <div className="btn-group">
-          <button className="btn btn-success submit">Submit reservation</button>
+          <button className="btn btn-success submit" onClick={handleSaveButton}>Submit reservation</button>
           <button className="btn btn-warning admin-mode" onClick={clickOnAdmin}>Admin mode</button>
         </div>
         <br/>
@@ -310,4 +345,5 @@ export const MyFabricComponent = () => {
     </div>
   );
 };
+
 
