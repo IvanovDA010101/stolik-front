@@ -1,6 +1,6 @@
-import {Establishment} from "../FunctionalComponents/Establishment";
 import {useState} from "react";
-import {StyledMainPlace} from "../Styles/StyledComponents";
+import {Restaurant} from "../Styles/StyledComponents";
+import {Establishment} from "../FunctionalComponents/Establishment";
 
 export const MainPlace = () => {
 
@@ -12,11 +12,6 @@ export const MainPlace = () => {
 
     const establishments = ["Первый", "Второй","Третий"];
     return (
-        <StyledMainPlace>
-            {/*<Switchers   options={["рестораны", "бары", "кафе" ]}*/}
-            {/*             selectedOption={{selectedOption}}*/}
-            {/*             onOptionSelect={handleOptionSelect}/>*/}
-            <Establishment establishments={establishments}/>
-        </StyledMainPlace>
+            <Establishment />
     )
 }

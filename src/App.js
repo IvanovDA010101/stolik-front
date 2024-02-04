@@ -4,6 +4,7 @@ import {Route, Routes} from "react-router";
 import {RestaurantPageMain} from "./Components/RestaurantPage/RestaurantPageMain";
 import Footer from "./Components/Footer/Viewers/Footer";
 
+
 function App() {
   return (
     <div className="App">

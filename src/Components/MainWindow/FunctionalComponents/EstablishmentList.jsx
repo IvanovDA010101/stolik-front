@@ -1,28 +1,46 @@
 import {StyledComponents, StyledEstablishmentList} from "../Styles/StyledComponents";
+import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 
-export const EstablishmentList = ({ establishments }) => {
-    const estMock ={
-        id: 1,
-        name: "name",
-        imageUrl: "https://learnrussianlanguage.net/wp-content/uploads/2019/11/64a49ba01cbd346245cf2f019689f59d.jpg",
-        // imageUrl: "https://media.discordapp.net/attachments/1045720492318928906/1202536734592598047/restoran-ruski.jpg?ex=65cdd09b&is=65bb5b9b&hm=845ee2241b05b664fb179b19ca14262a863d2366d7754f3aa31bf6619b61a2f9&=&format=webp&width=990&height=670",
-        description: "description",
-        address: "address"
+export const EstablishmentList = ({}) => {
+    const [establishments, setEstablishments] = useState([]);
+
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch('http://reserveeasy.ru:8080/api/v1/restaurants', {
+                headers: {
+                    'accept': '*/*'
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log(data);
+            setEstablishments(data);
+            // return data
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     }
-    for (let i = 0; i < 9; i++) { // выведет 0, затем 1, затем 2
-        estMock.id=i
-        establishments = establishments.concat(estMock)
-    }
-    // establishments
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+
     return (
         <StyledEstablishmentList>
             {establishments.map((establishment) => (
-                <StyledComponents key={establishment.id}>
-                    <img src={establishment.imageUrl} alt={establishment.name} />
-                    <p>{establishment.name}</p>
-                    <p>{establishment.description}</p>
-                    <p>{establishment.address}</p>
-                </StyledComponents>
+                <Link to={`/restaurant/${establishment.id}`}>
+                    <StyledComponents key={establishment.id}>
+                        <img src={establishment.url} alt={establishment.name}/>
+                        <p>{establishment.name}</p>
+                        <p>{establishment.description}</p>
+                        <p>{establishment.address}</p>
+                    </StyledComponents>
+                </Link>
             ))}
         </StyledEstablishmentList>
     );

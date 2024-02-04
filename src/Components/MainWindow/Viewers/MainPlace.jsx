@@ -12,15 +12,12 @@ export const MainPlace = () => {
         setSelectedOption(option);
     }
 
-    const establishments = ["Первый", "Второй","Третий"];
     return (
         <StyledMainPlace>
             <Switchers   options={["рестораны", "бары", "кафе" ]}
                          selectedOption={{selectedOption}}
                          onOptionSelect={handleOptionSelect}/>
-            <Link to={"/restaurant"}>
-            <EstablishmentList establishments={establishments}/>
-            </Link>
+            <EstablishmentList/>
         </StyledMainPlace>
     )
 }
