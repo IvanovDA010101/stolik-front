@@ -1,13 +1,18 @@
 import {useState, useEffect, useRef} from 'react';
 import * as fabric from 'fabric';
+import { useNavigate } from "react-router-dom";
+import {useParams} from "react-router";
 
 export const ClientScheme = () => {
-    const canvasRef = useRef(null); // Создаем ref для элемента canvas
+    const canvasRef = useRef(null);
+    const navigate = useNavigate()
 
+    const params = useParams()
+    const id = params.id
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://reserveeasy.ru:8080/api/v1/restaurants/1/tables', {
+                const response = await fetch(`http://reserveeasy.ru:8080/api/v1/restaurants/${id}/tables`, {
                     headers: {
                         'accept': '*/*'
                     }
@@ -35,7 +40,8 @@ export const ClientScheme = () => {
                 });
 
                 loadedCanvas.on('selection:created', function (e) {
-                    alert(e.selected);
+                    const tableId = e.selected[0]._objects[1].text
+                    navigate(`/restaurant/${id}/tables/${tableId}`)
                 });
                 console.log(loadedCanvas)
             } catch (error) {
@@ -47,6 +53,11 @@ export const ClientScheme = () => {
         fetchData(); // Загрузка данных при монтировании компонента
     }, []);
 
+
     // Отображение canvas
-    return <canvas ref={canvasRef}></canvas>;
+    return (
+        <div>
+        <canvas ref={canvasRef}></canvas>
+        </div>)
+
 }

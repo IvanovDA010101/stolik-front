@@ -5,6 +5,7 @@ import {RestaurantPageMain} from "./Components/RestaurantPage/RestaurantPageMain
 import Footer from "./Components/Footer/Viewers/Footer";
 import {Header} from "./Components/MainWindow/Viewers/Header";
 import {MyFabricComponent} from "./Components/RestaurantScheme";
+import {BookingService} from "./Components/RestaurantPage/Viewers/BookingService";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Main/>}/>
             <Route path="/restaurant/:id" element={<RestaurantPageMain/>}/>
+            <Route path="/restaurant/:id/tables/:tableId" element={<BookingService/>}/>
             <Route path="/scheme/" element={<MyFabricComponent/>}/>
         </Routes>
         <Footer />
