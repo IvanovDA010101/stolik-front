@@ -1,16 +1,14 @@
-import {Login} from "./Viewers/SignIn";
 import {Filter} from "../MainWindow/Viewers/Filter";
 import {EstablishmentsMap} from "../MainWindow/Viewers/EstablishmentsMap";
-import {Footer} from "../MainWindow/Viewers/Footer";
+import {Register} from "./Viewers/Register";
 
-export const SignIn = () => {
+export const SignUp = () => {
 
     return (
         <div>
-            <Login/>
+            <Register/>
             <Filter/>
             <EstablishmentsMap/>
-            <Footer/>
         </div>
     )
 }

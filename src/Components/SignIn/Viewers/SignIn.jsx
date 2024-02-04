@@ -13,7 +13,7 @@ export const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://reserveeasy.ru:8080/api/v1/users', {
+            const response = await fetch('http://reserveeasy.ru:8080/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -9,11 +9,9 @@ export const Main = () => {
 
     return (
         <div>
-            <Header/>
             <MainPlace/>
             <Filter/>
             <EstablishmentsMap/>
-            <Footer/>
         </div>
     )
 }

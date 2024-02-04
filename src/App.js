@@ -6,6 +6,7 @@ import Footer from "./Components/Footer/Viewers/Footer";
 import {Admin} from "./Components/Admin/Admin";
 import {SignIn} from "./Components/SignIn/SignIn";
 import {Header} from "./Components/MainWindow/Viewers/Header";
+import {SignUp} from "./Components/SignUp/MainRegister";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route path="/restaurant" element={<RestaurantPageMain/>}/>
             <Route path="/admin" element={<Admin/>}/>
             <Route path="/login" element={<SignIn/>}/>
+            <Route path="/register" element={<SignUp/>}/>
         </Routes>
         <Footer />
     </div>
