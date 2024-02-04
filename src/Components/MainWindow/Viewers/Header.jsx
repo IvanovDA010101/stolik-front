@@ -11,7 +11,7 @@ export const Header = () => {
 
     const textMain = "Главная"
     const textContacts = "О нас"
-    const welcomeText = "Добро пожаловать в TableBooky"
+    const welcomeText = "ReserveEasy"
     return (
         <StyledHeader>
             <HeaderImage src={"images/img_imgbintablere.png"}/>
