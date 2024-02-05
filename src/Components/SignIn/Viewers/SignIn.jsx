@@ -16,7 +16,7 @@ export const Login = () => {
             const response = await fetch('http://reserveeasy.ru:8080/login', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     email,
