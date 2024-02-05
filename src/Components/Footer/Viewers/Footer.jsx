@@ -1,4 +1,3 @@
-import * as PropTypes from "prop-types";
 import {StyledA, StyledFooter, StyledLink} from "../Styles/StyledComponents";
 
 
