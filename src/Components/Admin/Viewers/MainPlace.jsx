@@ -14,10 +14,11 @@ export const MainPlace = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://reserveeasy.ru:8080/api/v1/restaurants', {
+            const response = await fetch('http://reserveeasy.ru:8080/api/v1/admin/restaurants', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aUBtYWlsLnJ1In0.NihafUhuF1RjpYlyeb7cxzVghJlz-M5bNZjEl0UdrLM'
                 },
                 body: JSON.stringify({
                     name,

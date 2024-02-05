@@ -1,13 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import  {
-    ButtonContainer, ForgotPassword, HorizontalRule,
-    InputContainer,
-    LoginWith,
-    MainContainer,
-    WelcomeText,
-    Input, Button
-} from "../Styles/StyledComponents";
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {Button, ButtonContainer, Input, InputContainer, MainContainer, WelcomeText} from "../Styles/StyledComponents";
 
 export const Login = () => {
     const [email, setEmail] = useState('');
@@ -45,10 +38,11 @@ export const Login = () => {
             <WelcomeText>Войти</WelcomeText>
             <InputContainer>
                 <Input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                <Input type="password" placeholder="Пароль" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <Input type="password" placeholder="Пароль" value={password}
+                       onChange={(e) => setPassword(e.target.value)}/>
             </InputContainer>
             <ButtonContainer>
-                <Button content="Войти" />
+                <Button content="Войти"/>
             </ButtonContainer>
         </MainContainer>
     );

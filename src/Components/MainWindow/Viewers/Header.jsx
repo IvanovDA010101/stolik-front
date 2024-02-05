@@ -1,11 +1,12 @@
 import {
     HeaderImage,
-    HeaderNavigationButtons, SignButton,
+    HeaderNavigationButtons,
+    SignButton,
     SignButtons,
-    StyledHeader, StyledText
+    StyledHeader,
+    StyledText
 } from "../Styles/StyledComponents";
-import {Link} from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from "react-router-dom";
 
 export const Header = () => {
 
@@ -27,9 +28,7 @@ export const Header = () => {
             <HeaderNavigationButtons>
                 <Link to={"/"}>
                     <StyledText style={{marginTop: "20px"}}>{welcomeText}</StyledText>
-                    {/*<HeaderButton>{textMain}</HeaderButton>*/}
                 </Link>
-                {/*<HeaderButton>{textContacts}</HeaderButton>*/}
             </HeaderNavigationButtons>
             <SignButtons>
                 <SignButton onClick={handleSignIn}>Войти</SignButton>

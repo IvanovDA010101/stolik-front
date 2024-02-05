@@ -3,12 +3,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {useState} from "react";
 import {useParams} from "react-router";
+import { useNavigate } from 'react-router-dom';
 
 
 export const BookingService = () => {
     const [numberOfPeople, setNumberOfPeople] = useState('');
     const [selectedDate, setSelectedDate] = useState(new Date());
 
+    const navigate = useNavigate();
     const params = useParams()
     const id = params.id
     const tableId = params.tableId
@@ -50,6 +52,7 @@ export const BookingService = () => {
         }
         console.log(json)
         sendDataToBackend(JSON.stringify(json));
+        navigate("/")
     };
 
     return (
