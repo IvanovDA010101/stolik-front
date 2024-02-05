@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {MainPlaceForm, MainPlaceInput, MainPlaceLabel} from "../../Admin/Styles/StyledComponents";
+import  {
+    ButtonContainer, ForgotPassword, HorizontalRule,
+    InputContainer,
+    LoginWith,
+    MainContainer,
+    WelcomeText,
+    Input, Button
+} from "../Styles/StyledComponents";
 
 export const Login = () => {
     const [email, setEmail] = useState('');
@@ -34,16 +41,15 @@ export const Login = () => {
     };
 
     return (
-        <MainPlaceForm onSubmit={handleLogin}>
-            <MainPlaceLabel>
-                Email:
-                <MainPlaceInput type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </MainPlaceLabel>
-            <MainPlaceLabel>
-                Пароль:
-                <MainPlaceInput type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </MainPlaceLabel>
-            <button type="submit">Войти</button>
-        </MainPlaceForm>
+        <MainContainer onSubmit={handleLogin}>
+            <WelcomeText>Войти</WelcomeText>
+            <InputContainer>
+                <Input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <Input type="password" placeholder="Пароль" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            </InputContainer>
+            <ButtonContainer>
+                <Button content="Войти" />
+            </ButtonContainer>
+        </MainContainer>
     );
 }
