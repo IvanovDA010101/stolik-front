@@ -284,9 +284,11 @@ export const MyFabricComponent = () => {
     });
   }
 
+
+  //TODO: самая тупая заглушка
   const sendDataToBackend = async (json) => {
     try {
-      const response = await fetch('http://reserveeasy.ru:8080/api/v1/restaurants/985/tables', {
+      const response = await fetch('http://reserveeasy.ru:8080/api/v1/restaurants/3/tables', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Указываем тип контента как JSON

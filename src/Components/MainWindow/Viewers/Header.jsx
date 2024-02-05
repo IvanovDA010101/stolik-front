@@ -15,12 +15,12 @@ export const Header = () => {
     return (
         <StyledHeader>
             <HeaderImage src={"images/img_imgbintablere.png"}/>
-            <StyledText style={{marginTop: "20px"}}>{welcomeText}</StyledText>
             <HeaderNavigationButtons>
                 <Link to={"/"}>
-                    <HeaderButton>{textMain}</HeaderButton>
+                    <StyledText style={{marginTop: "20px"}}>{welcomeText}</StyledText>
+                    {/*<HeaderButton>{textMain}</HeaderButton>*/}
                 </Link>
-                <HeaderButton>{textContacts}</HeaderButton>
+                {/*<HeaderButton>{textContacts}</HeaderButton>*/}
             </HeaderNavigationButtons>
             <SignButtons>
                 <SignButton>Sign In</SignButton>

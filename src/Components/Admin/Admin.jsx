@@ -8,7 +8,6 @@ export const Admin = () => {
 
     return (
         <div>
-            <Header/>
             <MainPlace/>
             <Filter/>
             <EstablishmentsMap/>
