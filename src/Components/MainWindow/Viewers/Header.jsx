@@ -6,12 +6,24 @@ import {
     StyledHeader, StyledText
 } from "../Styles/StyledComponents";
 import {Link} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
 
     const textMain = "Главная"
     const textContacts = "О нас"
     const welcomeText = "ReserveEasy"
+
+    const navigate = useNavigate();
+
+    const handleSignIn = () => {
+            navigate("/login");
+    };
+
+    const handleSignUp = () => {
+        navigate("/register")
+    }
+
     return (
         <StyledHeader>
             <HeaderImage src={"images/img_imgbintablere.png"}/>
@@ -23,11 +35,9 @@ export const Header = () => {
                 {/*<HeaderButton>{textContacts}</HeaderButton>*/}
             </HeaderNavigationButtons>
             <SignButtons>
-                <SignButton>Sign In</SignButton>
-                <SignButton>Sign Up</SignButton>
+                <SignButton onClick={handleSignIn}>Войти</SignButton>
+                <SignButton onClick={handleSignUp}>Регистрация</SignButton>
             </SignButtons>
         </StyledHeader>
-
     )
-
 }
