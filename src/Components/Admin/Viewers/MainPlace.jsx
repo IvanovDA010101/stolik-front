@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {MainPlaceForm, MainPlaceInput, MainPlaceLabel} from "../Styles/StyledComponents"
+import {Button, ButtonContainer, Input, InputContainer, MainContainer, WelcomeText} from "../Styles/StyledComponents";
+
 
 export const MainPlace = () => {
     const [name, setName] = useState('');
@@ -38,28 +39,18 @@ export const MainPlace = () => {
     };
 
     return (
-        <MainPlaceForm onSubmit={handleSubmit}>
-            <MainPlaceLabel>
-                Имя ресторана:
-                <MainPlaceInput type="text" value={name} onChange={(e) => setName(e.target.value)} />
-            </MainPlaceLabel>
-            <MainPlaceLabel>
-                Адрес ресторана:
-                <MainPlaceInput type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
-            </MainPlaceLabel>
-            <MainPlaceLabel>
-                Город ресторана:
-                <MainPlaceInput type="text" value={city} onChange={(e) => setCity(e.target.value)} />
-            </MainPlaceLabel>
-            <MainPlaceLabel>
-                Описание ресторана:
-                <MainPlaceInput type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
-            </MainPlaceLabel>
-            <MainPlaceLabel>
-                Ссылка на фото ресторана:
-                <MainPlaceInput type="text" value={url} onChange={(e) => setUrl(e.target.value)} />
-            </MainPlaceLabel>
-            <button type="submit">Добавить ресторан</button>
-        </MainPlaceForm>
+        <MainContainer onSubmit={handleSubmit}>
+            <WelcomeText>Добавить ресторан</WelcomeText>
+            <InputContainer>
+                <Input type="text" placeholder="Название ресторана" value={name} onChange={(e) => setName(e.target.value)}/>
+                <Input type="text" placeholder="Город" value={city} onChange={(e) => setCity(e.target.value)}/>
+                <Input type="text" placeholder="Адрес" value={address} onChange={(e) => setAddress(e.target.value)}/>
+                <Input type="text" placeholder="Описание" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                <Input type="text" placeholder="Ссылка на фотографии" value={url} onChange={(e) => setUrl(e.target.value)}/>
+            </InputContainer>
+            <ButtonContainer>
+                <Button content="Добавить ресторан" />
+            </ButtonContainer>
+        </MainContainer>
     );
 };

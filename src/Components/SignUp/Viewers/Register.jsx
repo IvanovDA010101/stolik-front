@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import validator from 'validator';
-import {MainPlaceForm, MainPlaceInput, MainPlaceLabel} from "../../Admin/Styles/StyledComponents";
-import DatePicker from 'react-datepicker';
 import  'react-datepicker/dist/react-datepicker.css';
+import {Button, ButtonContainer, Input, InputContainer, MainContainer, WelcomeText} from "../Styles/StyledComponents";
+
 
 
 export const Register = () => {
@@ -52,32 +52,19 @@ export const Register = () => {
     };
 
     return (
-        <MainPlaceForm onSubmit={handleRegister}>
-            <MainPlaceLabel>
-                Имя:
-                <MainPlaceInput type="text" value={firstName} onChange={(e) => setFirstname(e.target.value)} />
-            </MainPlaceLabel>
-            <MainPlaceLabel>
-                Фамилия:
-                <MainPlaceInput type="text" value={lastName} onChange={(e) => setLastname(e.target.value)} />
-            </MainPlaceLabel>
-            <MainPlaceLabel>
-                ДР:
-                <DatePicker selected={birthdayDate} onChange={(date) => setBirthdayDate(date)} dateFormat="yyyy-MM-dd" />
-            </MainPlaceLabel>
-            <MainPlaceLabel>
-                Телефон номер:
-                <MainPlaceInput type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-            </MainPlaceLabel>
-            <MainPlaceLabel>
-                Email:
-                <MainPlaceInput type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </MainPlaceLabel>
-            <MainPlaceLabel>
-                Пароль:
-                <MainPlaceInput type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </MainPlaceLabel>
-            <button type="submit">Зарегистрироваться</button>
-        </MainPlaceForm>
+        <MainContainer onSubmit={handleRegister}>
+            <WelcomeText>Регистрация</WelcomeText>
+            <InputContainer>
+                <Input type="text" placeholder="Имя" value={firstName} onChange={(e) => setFirstname(e.target.value)}/>
+                <Input type="text" placeholder="Фамилия" value={lastName} onChange={(e) => setLastname(e.target.value)}/>
+                <Input type="text" placeholder="Телефон номер" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
+                <Input type="text" placeholder="Дата рождения" value={birthdayDate} onChange={(e) => setBirthdayDate(e.target.value)}/>
+                <Input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <Input type="password" placeholder="Пароль" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            </InputContainer>
+            <ButtonContainer>
+                <Button content="Регистрация" />
+            </ButtonContainer>
+        </MainContainer>
     );
 }

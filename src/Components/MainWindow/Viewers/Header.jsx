@@ -1,5 +1,4 @@
 import {
-    HeaderButton,
     HeaderImage,
     HeaderNavigationButtons, SignButton,
     SignButtons,
@@ -10,8 +9,6 @@ import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
 
-    const textMain = "Главная"
-    const textContacts = "О нас"
     const welcomeText = "ReserveEasy"
 
     const navigate = useNavigate();

@@ -1,10 +1,5 @@
-import {
-    StyledFooter,
-    StyledFooterBottom,
-    StyledFooterBottomA,
-    StyledFooterBottomH3,
-    StyledFooterBottomP, StyledFooterSpan, Title,
-} from "../Styles/StyledComponents";
+import {StyledA, StyledFooter, StyledLink} from "../Styles/StyledComponents";
+
 
 const Footer = () => {
 
@@ -20,8 +15,12 @@ const Footer = () => {
             </div>
             <div>
                 <ul style={{display: "flex", gap:"20px", listStyle:"none", cursor:"pointer"}}>
-                    <a>{textMain}</a>
-                    <a>{textAboutMe}</a>
+                    <StyledLink to="/">
+                        <StyledA>{textMain}</StyledA>
+                    </StyledLink>
+                    <StyledLink to="/">
+                        <StyledA>{textAboutMe}</StyledA>
+                    </StyledLink>
                 </ul>
             </div>
                 <div style={{display: "flex", justifyContent: "space-between", alignItems:"center", gap: "20px"}}>
@@ -34,9 +33,7 @@ const Footer = () => {
                     <div>
                         <img/>
                     </div>
-                    <div>
-                        <h3>TableBooky.com | All rights reserve</h3>
-                    </div>
+
                 </div>
             </div>
         </StyledFooter>
