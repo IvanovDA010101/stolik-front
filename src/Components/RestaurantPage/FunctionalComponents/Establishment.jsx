@@ -48,23 +48,23 @@ export const Establishment = () => {
                     <p>{establishment.address}</p>
                     <BookingButton>Забронировать</BookingButton>
                 </RestaurantInfo>
-                <ReactSVG src="/images/SchemePlace.svg"
-                          afterInjection={(svg, error) => { // Добавление обработчика после вставки SVG
-                              if (error) {
-                                  console.error('Ошибка загрузки SVG:', error);
-                                  return;
-                              }
-                              const paths = svg.getElementsByTagName('rect'); // Получение всех элементов <rect>
-                              Array.from(paths).forEach(rect => {
-                                  rect.onmouseover = handleHover; // Добавление обработчика события наведения мыши
-                                  rect.onmouseleave = (e) => {
-                                      e.target.style.stroke = '';
-                                  }; // Удаление подсветки при отводе мыши
-                                  rect.onclick = handleClick; // Добавление обработчика клика
-                              });
-                          }}
-                />
-                // {/*<div*/}
+                {/*<ReactSVG src="/images/SchemePlace.svg"*/}
+                {/*          afterInjection={(svg, error) => { // Добавление обработчика после вставки SVG*/}
+                {/*              if (error) {*/}
+                {/*                  console.error('Ошибка загрузки SVG:', error);*/}
+                {/*                  return;*/}
+                {/*              }*/}
+                {/*              const paths = svg.getElementsByTagName('rect'); // Получение всех элементов <rect>*/}
+                {/*              Array.from(paths).forEach(rect => {*/}
+                {/*                  rect.onmouseover = handleHover; // Добавление обработчика события наведения мыши*/}
+                {/*                  rect.onmouseleave = (e) => {*/}
+                {/*                      e.target.style.stroke = '';*/}
+                {/*                  }; // Удаление подсветки при отводе мыши*/}
+                {/*                  rect.onclick = handleClick; // Добавление обработчика клика*/}
+                {/*              });*/}
+                {/*          }}*/}
+                {/*/>*/}
+                 {/*<div*/}
                 {/*    dangerouslySetInnerHTML={{__html: svgContent}}*/}
                 {/*    throwIfNamespace={false}*/}
                 {/*/>*/}
