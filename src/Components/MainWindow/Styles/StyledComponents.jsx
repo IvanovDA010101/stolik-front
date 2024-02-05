@@ -108,10 +108,10 @@ export const StyledHeader = styled.nav`
 `
 
 export const HeaderImage = styled.img`
-    border-radius: 50%;
-    width: 90px;
-    height: 90px;
-    object-fit: cover;
+    border-radius: 35%;
+    width: 200px;
+    height: 60px;
+    //object-fit: cover;
 
 `
 export const HeaderNavigationButtons = styled.div`

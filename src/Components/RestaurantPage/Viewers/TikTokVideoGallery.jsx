@@ -17,8 +17,8 @@ const TikTokVideoGallery = () => {
             // }
             // const data = await response.json();
             setVideos( [
-                "https://cdn.discordapp.com/attachments/1045720492318928906/1204056615662395442/cipi-cipi-capa-capa-prezidenti_VIDEOMIN.NET.mp4?ex=65d3581b&is=65c0e31b&hm=363c725b617d352e292b8e9c9ede519d3b6e2ba7ea6c07c02d6a9f7ff2c6aa8b&",
-                "https://cdn.discordapp.com/attachments/1045720492318928906/1204059811935821844/Venice_5.mp4?ex=65d35b15&is=65c0e615&hm=8bf0d2ec5bb58686258685bca82ae72054d5b1b86603f666fbffdfcfa0ce197a&",
+                "https://cdn.discordapp.com/attachments/1193545605939728446/1204193567690596352/dizayn-proekt-restorana-ot-nasey-studii-dizayna-interera_VIDEOMIN.NET.mp4?ex=65d3d7a7&is=65c162a7&hm=f938b94af106d0e628b5386bd906b13e4d22e9dbde06ecf3e95f3e43b5850b16&",
+                "https://cdn.discordapp.com/attachments/1193545605939728446/1204192709406101524/interer-restorana-portfolio-33by-architecture_VIDEOMIN.NET.mp4?ex=65d3d6da&is=65c161da&hm=52521fc0fe65379d268d5ed6525167b60e8e9d1de33936224a19794e1f81efd4&",
                 "https://cdn.discordapp.com/attachments/1045720492318928906/1204059811935821844/Venice_5.mp4?ex=65d35b15&is=65c0e615&hm=8bf0d2ec5bb58686258685bca82ae72054d5b1b86603f666fbffdfcfa0ce197a&"])
 
             // setVideos(data.videos);
