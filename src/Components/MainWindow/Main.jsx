@@ -11,7 +11,6 @@ export const Main = () => {
             <MainPlace/>
             <Filter/>
             <EstablishmentsMap/>
-            <Footer/>
         </div>
     )
 }
