@@ -286,7 +286,7 @@ export const MyFabricComponent = () => {
 
   const sendDataToBackend = async (json) => {
     try {
-      const response = await fetch('http://reserveeasy.ru:8080/api/v1/restaurants/1/tables', {
+      const response = await fetch('http://reserveeasy.ru:8080/api/v1/restaurants/985/tables', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Указываем тип контента как JSON
