@@ -1,13 +1,15 @@
 // import '../App.css';
 import * as fabric from 'fabric';
 import {useEffect, useRef} from "react";
+import {useParams} from "react-router";
 
 //тестовая отрисовка схемы зала админа
 export const MyFabricComponent = () => {
   let canvas = useRef(null);
   let canvasEl = useRef(null);
   let objId = useRef(1);
-
+  const params = useParams()
+  const id = params.id
   const grid = 30;
   const width = grid * 30;
   const height = grid * 30;
@@ -288,10 +290,11 @@ export const MyFabricComponent = () => {
   //TODO: самая тупая заглушка
   const sendDataToBackend = async (json) => {
     try {
-      const response = await fetch('http://reserveeasy.ru:8080/api/v1/restaurants/3/tables', {
+      const response = await fetch(`http://45.151.144.194:8080/api/v1/owner/restaurants/${id}/tables`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Указываем тип контента как JSON
+          'Authorization': 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZWthbkBnbWFpbC5jb20ifQ.m9kj-TWutvYCnQOMCG9eZ8MP-ASJtKWusyGfAcDXzp4',
           'accept': '*/*'
         },
         body: json

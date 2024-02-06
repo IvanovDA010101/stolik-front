@@ -21,7 +21,7 @@ export const BookingService = () => {
 
     const sendDataToBackend = async (json) => {
         try {
-            const response = await fetch(`http://reserveeasy.ru:8080/api/v1/bookings`, {
+            const response = await fetch(`http://45.151.144.194:8080/api/v1/bookings`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', // Указываем тип контента как JSON
@@ -47,7 +47,7 @@ export const BookingService = () => {
             restaurantId: id,
             tableId: tableId,
             userId: 1,
-            time : "2024-02-04T22:17:35.387Z"
+            time : `${selectedDate}T18:17:35.387Z` //"2024-02-04T22:17:35.387Z"
         }
         console.log(json)
         sendDataToBackend(JSON.stringify(json));

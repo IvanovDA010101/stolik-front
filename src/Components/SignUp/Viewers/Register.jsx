@@ -31,7 +31,7 @@ export const Register = () => {
         }
 
         try {
-            const response = await fetch('http://reserveeasy.ru:8080/api/v1/users', {
+            const response = await fetch('http://45.151.144.194:8080/api/v1/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

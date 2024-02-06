@@ -19,7 +19,7 @@ function App() {
             <Route path="/" element={<Main/>}/>
             <Route path="/restaurant/:id" element={<RestaurantPageMain/>}/>
             <Route path="/restaurant/:id/tables/:tableId" element={<BookingService/>}/>
-            <Route path="/scheme/" element={<MyFabricComponent/>}/>
+            <Route path="/scheme/:id" element={<MyFabricComponent/>}/>
             <Route path="/admin" element={<Admin/>}/>
             <Route path="/login" element={<SignIn/>}/>
             <Route path="/register" element={<SignUp/>}/>

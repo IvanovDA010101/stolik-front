@@ -12,7 +12,7 @@ export const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://reserveeasy.ru:8080/login', {
+            const response = await fetch('http://45.151.144.194:8080/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -25,13 +25,13 @@ export const Login = () => {
             });
 
             if (!response.ok) {
-                const data = await response.json();
-                console.error('Login failed:', data.message);
+                alert('Login Failed!')
             } else {
                 console.log('Login successful:');
                 navigate('/');
             }
         } catch (error) {
+            alert(error)
             console.error('Login failed 1234242342:', error);
         }
 

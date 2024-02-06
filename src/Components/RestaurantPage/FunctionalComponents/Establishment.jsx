@@ -10,7 +10,7 @@ export const Establishment = () => {
     const id = params.id
     const fetchData = async () => {
         try {
-            const response = await fetch(`http://reserveeasy.ru:8080/api/v1/restaurants/${id}`, {
+            const response = await fetch(`http://45.151.144.194:8080/api/v1/restaurants/${id}`, {
                 headers: {
                     'accept': '*/*'
                 }
