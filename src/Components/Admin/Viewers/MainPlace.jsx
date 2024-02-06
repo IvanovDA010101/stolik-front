@@ -14,7 +14,7 @@ export const MainPlace = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://45.151.144.194:8080/api/v1/admin/restaurants/', {
+            const response = await fetch('http://45.151.144.194:8080/api/v1/admin/restaurants', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,7 +47,8 @@ export const MainPlace = () => {
                 <InputContainer>
                     <Input type="text" placeholder="Название ресторана" value={name}
                                onChange={(e) => setName(e.target.value)}/>
-                    <Input type="text" placeholder="Город" value={city} onChange={(e) => setCity(e.target.value)}/>
+                    <Input type="text" placeholder="Город" value={city}
+                           onChange={(e) => setCity(e.target.value)}/>
                     <Input type="text" placeholder="Адрес" value={address}
                                onChange={(e) => setAddress(e.target.value)}/>
                     <Input type="text" placeholder="Описание" value={description}

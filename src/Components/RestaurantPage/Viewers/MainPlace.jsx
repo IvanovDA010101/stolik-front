@@ -7,8 +7,8 @@ export const MainPlace = () => {
     return (
         <>
             <Establishment/>
-            <TikTokVideoGallery/>
             <ClientScheme/>
+            <TikTokVideoGallery/>
         </>
     )
 }

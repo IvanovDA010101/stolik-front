@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
+import {SignButton, SignButtons} from "../../MainWindow/Styles/StyledComponents";
 
 const TikTokVideoGallery = () => {
     const [videos, setVideos] = useState([]);
@@ -62,8 +63,10 @@ const TikTokVideoGallery = () => {
                 })
             }
             <div style={{position: 'absolute', bottom: 0}}>
-                <button onClick={() => changeVideo(-1)}>Предыдущее видео</button>
-                <button onClick={() => changeVideo(1)}>Следующее видео</button>
+                <SignButtons>
+                <SignButton onClick={() => changeVideo(-1)}>Предыдущее видео</SignButton>
+                <SignButton onClick={() => changeVideo(1)}>Следующее видео</SignButton>
+                </SignButtons>
             </div>
         </div>
     );
