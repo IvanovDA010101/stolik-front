@@ -40,7 +40,7 @@ export const Establishment = () => {
                     <p>{establishment.name}</p>
                     <p>{establishment.description}</p>
                     <p>{establishment.address}</p>
-                    <BookingButton>Забронировать</BookingButton>
+                    {/*<BookingButton>Забронировать</BookingButton>*/}
                 </RestaurantInfo>
             </Restaurant>
         </>

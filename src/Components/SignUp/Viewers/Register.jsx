@@ -18,17 +18,17 @@ export const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
 
-        // const isValidFirstName = validator.isLength(firstName, { min: 2, max: 30 });
-        // const isValidLastName = validator.isLength(lastName, { min: 2, max: 30 });
-        // const isValidEmail = validator.isEmail(email);
-        // const isValidPassword = validator.isLength(password, { min: 6, max: 30 });
-        // const isValidPhoneNumber = validator.isMobilePhone(phoneNumber, 'ru-RU');
-        // const isValidBirthdayDate = validator.isDate(birthdayDate, { format: 'YYYY-MM-DD' });
-        //
-        // if (!isValidFirstName || !isValidLastName || !isValidEmail || !isValidPassword || !isValidPhoneNumber || !isValidBirthdayDate) {
-        //     console.error('Invalid data');
-        //         return;
-        // }
+        const isValidFirstName = validator.isLength(firstName, { min: 2, max: 30 });
+        const isValidLastName = validator.isLength(lastName, { min: 2, max: 30 });
+        const isValidEmail = validator.isEmail(email);
+        const isValidPassword = validator.isLength(password, { min: 6, max: 30 });
+        const isValidPhoneNumber = validator.isMobilePhone(phoneNumber, 'ru-RU');
+        const isValidBirthdayDate = validator.isDate(birthdayDate, { format: 'YYYY-MM-DD' });
+
+        if (!isValidFirstName || !isValidLastName || !isValidEmail || !isValidPassword || !isValidPhoneNumber || !isValidBirthdayDate) {
+            console.error('Invalid data');
+                return;
+        }
 
         try {
             const response = await fetch('http://reserveeasy.ru:8080/api/v1/users', {

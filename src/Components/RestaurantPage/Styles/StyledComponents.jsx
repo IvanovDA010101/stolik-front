@@ -21,7 +21,7 @@ export const RestaurantInfo = styled.div`
 
 export const BookingButton = styled.button`
     padding: 10px 20px;
-    background-color: #4CAF50; /* Замените на нужный цвет */
+    background-color: #4CAF50; 
     color: white;
     border: none;
     text-align: center;

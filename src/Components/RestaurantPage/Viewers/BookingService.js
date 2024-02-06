@@ -1,9 +1,8 @@
-
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {useState} from "react";
+import React, {useState} from "react";
 import {useParams} from "react-router";
 import { useNavigate } from 'react-router-dom';
+import {Button, ButtonContainer, Input, InputContainer, WelcomeText} from "../../SignUp/Styles/StyledComponents";
 
 
 export const BookingService = () => {
@@ -56,26 +55,16 @@ export const BookingService = () => {
     };
 
     return (
-        <form onSubmit={handleFormSubmit}>
-            <div>
-                <label>Количество человек:</label>
-                <input
-                    type="number"
-                    value={numberOfPeople}
-                    onChange={(e) => setNumberOfPeople(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label>Выберите дату:</label>
-                <DatePicker
-                    selected={selectedDate}
-                    onChange={(date) => setSelectedDate(date)}
-                    dateFormat="dd/MM/yyyy/hh/mm"
-                    required
-                />
-            </div>
-            <button type="submit" onClick={handleSubmitButton}>Забронировать</button>
+        <form onSubmit={handleSubmitButton}>
+            <WelcomeText>Бронирование</WelcomeText>
+            <InputContainer>
+                <Input type="text" placeholder="Количество человек" value={numberOfPeople} onChange={(e) => setNumberOfPeople(e.target.value)}/>
+                <Input type="date" placeholder="Дата" value={selectedDate}
+                       onChange={(e) => setSelectedDate(e.target.value)}/>
+            </InputContainer>
+            <ButtonContainer>
+                <Button content="Забронировать"/>
+            </ButtonContainer>
         </form>
     );
 }

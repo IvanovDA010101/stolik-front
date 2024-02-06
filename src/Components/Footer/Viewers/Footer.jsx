@@ -11,7 +11,7 @@ const Footer = () => {
         <StyledFooter>
             <div style={{display:"flex", flexDirection:"column", alignItems:"center", textAlign:'center'}}>
             <div>
-                <h2 style={{color:"orange"}}>Reserve<span style={{color:"yellow"}}>Easy</span></h2>
+                <h2 style={{color:"white"}}>Reserve<span style={{color:"white"}}>Easy</span></h2>
             </div>
             <div>
                 <ul style={{display: "flex", gap:"20px", listStyle:"none", cursor:"pointer"}}>

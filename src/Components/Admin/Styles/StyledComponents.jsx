@@ -11,7 +11,7 @@ export const MainContainer = styled.div`
     backdrop-filter: blur(8.5px);
     -webkit-backdrop-filter: blur(8.5px);
     border-radius: 10px;
-    color: #FFC107;
+    color: #BDA1EC;
     text-transform: uppercase;
     letter-spacing: 0.4rem;
     margin: 15px auto 20px;
@@ -74,25 +74,6 @@ export const ButtonContainer = styled.div`
     justify-content: center;
 `;
 
-export const LoginWith = styled.h5`
-    cursor: pointer;
-`;
-
-export const HorizontalRule = styled.hr`
-    width: 90%;
-    height: 0.3rem;
-    border-radius: 0.8rem;
-    border: none;
-    background: linear-gradient(to right, #14163c 0%, #03217b 79%);
-    background-color: #ebd0d0;
-    margin: 1.5rem 0 1rem 0;
-    backdrop-filter: blur(25px);
-`;
-
-export const ForgotPassword = styled.h4`
-  cursor: pointer;
-`;
-
 export const Input = ({ type, placeholder }) => {
     return <StyledInput type={type} placeholder={placeholder} />;
 }
@@ -106,12 +87,12 @@ export const StyledInput = styled.input`
   padding: 1rem;
   border: none;
   outline: none;
-  color: #FFC107;
+  color: #BDA1EC;
   font-size: 1rem;
   font-weight: bold;
   &:focus {
     display: inline-block;
-    box-shadow: 0 0 0 0.2rem #FFC107;
+    box-shadow: 0 0 0 0.2rem #BDA1EC;
     backdrop-filter: blur(12rem);
     border-radius: 2rem;
   }
@@ -127,7 +108,7 @@ export const Button = ({ content }) => {
 }
 
 export const StyledButton = styled.button`
-  background: linear-gradient(to right, #FFC107 0%, #FFC107 79%);
+  background: linear-gradient(to right, #BDA1EC 0%, #BDA1EC 79%);
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   width: 65%;
