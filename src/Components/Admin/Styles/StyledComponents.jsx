@@ -74,8 +74,8 @@ export const ButtonContainer = styled.div`
     justify-content: center;
 `;
 
-export const Input = ({ type, placeholder }) => {
-    return <StyledInput type={type} placeholder={placeholder} />;
+export const Input = ({ type, placeholder, value, onChange }) => {
+    return <StyledInput type={type} placeholder={placeholder} value={value} onChange={onChange} />;
 }
 
 export const StyledInput = styled.input`
