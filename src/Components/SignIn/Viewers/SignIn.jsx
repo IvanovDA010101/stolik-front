@@ -1,18 +1,6 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import  {
-    ButtonContainer,
-    InputContainer,
-    MainContainer,
-    WelcomeText,
-    Input, Button
-} from "../Styles/StyledComponents";
-=======
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
 import {Button, ButtonContainer, Input, InputContainer, MainContainer, WelcomeText} from "../Styles/StyledComponents";
->>>>>>> f46aa5fe6d000942c8b2e3bac9e63e4fc040d8d1
 
 export const Login = () => {
     const [email, setEmail] = useState('');
@@ -52,7 +40,6 @@ export const Login = () => {
 
 
     return (
-<<<<<<< HEAD
         <MainContainer>
             <form onSubmit={handleLogin}>
                 <WelcomeText>Войти</WelcomeText>
@@ -68,23 +55,10 @@ export const Login = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-
                 <ButtonContainer>
                     <Button content="Войти"/>
                 </ButtonContainer>
             </form>
-=======
-        <MainContainer onSubmit={handleLogin}>
-            <WelcomeText>Войти</WelcomeText>
-            <InputContainer>
-                <Input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                <Input type="password" placeholder="Пароль" value={password}
-                       onChange={(e) => setPassword(e.target.value)}/>
-            </InputContainer>
-            <ButtonContainer>
-                <Button content="Войти"/>
-            </ButtonContainer>
->>>>>>> f46aa5fe6d000942c8b2e3bac9e63e4fc040d8d1
         </MainContainer>
     );
 }
