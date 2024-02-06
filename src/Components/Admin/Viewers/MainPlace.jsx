@@ -14,10 +14,11 @@ export const MainPlace = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://reserveeasy.ru:8080/api/v1/restaurants', {
+            const response = await fetch('http://reserveeasy.ru:8080/api/v1/admin/restaurants/', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aUBtYWlsLnJ1In0.NihafUhuF1RjpYlyeb7cxzVghJlz-M5bNZjEl0UdrLM'
                 },
                 body: JSON.stringify({
                     name,
@@ -29,28 +30,35 @@ export const MainPlace = () => {
                 }),
             });
             if (!response.ok) {
-                console.error('Ошибка при добавлении ресторана:', await response.text());
+                const errorMessage = await response.text();
+                console.error('Ошибка при добавлении ресторана: ', + errorMessage);
             } else {
                 alert('Ресторан успешно добавлен!');
             }
         } catch (error) {
-            console.error('Ошибка при добавлении ресторана:', error);
+            console.error('Ошибка при добавлении ресторана:', error.message);
         }
     };
 
     return (
-        <MainContainer onSubmit={handleSubmit}>
+        <MainContainer>
             <WelcomeText>Добавить ресторан</WelcomeText>
-            <InputContainer>
-                <Input type="text" placeholder="Название ресторана" value={name} onChange={(e) => setName(e.target.value)}/>
-                <Input type="text" placeholder="Город" value={city} onChange={(e) => setCity(e.target.value)}/>
-                <Input type="text" placeholder="Адрес" value={address} onChange={(e) => setAddress(e.target.value)}/>
-                <Input type="text" placeholder="Описание" value={description} onChange={(e) => setDescription(e.target.value)}/>
-                <Input type="text" placeholder="Ссылка на фотографии" value={url} onChange={(e) => setUrl(e.target.value)}/>
-            </InputContainer>
-            <ButtonContainer>
-                <Button content="Добавить ресторан" />
-            </ButtonContainer>
+            <form onSubmit={handleSubmit}>
+                <InputContainer>
+                    <Input type="text" placeholder="Название ресторана" value={name}
+                           onChange={(e) => setName(e.target.value)}/>
+                    <Input type="text" placeholder="Город" value={city} onChange={(e) => setCity(e.target.value)}/>
+                    <Input type="text" placeholder="Адрес" value={address}
+                           onChange={(e) => setAddress(e.target.value)}/>
+                    <Input type="text" placeholder="Описание" value={description}
+                           onChange={(e) => setDescription(e.target.value)}/>
+                    <Input type="text" placeholder="Ссылка на фотографии" value={url}
+                           onChange={(e) => setUrl(e.target.value)}/>
+                </InputContainer>
+                <ButtonContainer>
+                    <Button content="Добавить ресторан"/>
+                </ButtonContainer>
+            </form>
         </MainContainer>
-    );
+);
 };

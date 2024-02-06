@@ -99,8 +99,8 @@ export const ForgotPassword = styled.h4`
   cursor: pointer;
 `;
 
-export const Input = ({ type, placeholder }) => {
-    return <StyledInput type={type} placeholder={placeholder} />;
+export const Input = ({ type, placeholder, value, onChange }) => {
+    return <StyledInput type={type} placeholder={placeholder} value={value} onChange={onChange}/>;
 }
 
 export const StyledInput = styled.input`

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import  {
-    ButtonContainer, ForgotPassword, HorizontalRule,
+    ButtonContainer,
     InputContainer,
-    LoginWith,
     MainContainer,
     WelcomeText,
     Input, Button
@@ -12,7 +11,6 @@ import  {
 export const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [sessionId, setSessionId] = useState('');
     let navigate = useNavigate();
 
 
@@ -29,27 +27,45 @@ export const Login = () => {
                     email,
                     password
                 }),
-            });
-            setSessionId(sessionId);
 
-            navigate('/');
-            console.log('Login successful:', response.data);
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                console.error('Login failed:', data.message);
+            } else {
+                console.log('Login successful:');
+                navigate('/');
+            }
         } catch (error) {
-            console.error('Login failed:', error);
+            console.error('Login failed 1234242342:', error);
         }
 
+        console.log(e.response)
     };
 
+
     return (
-        <MainContainer onSubmit={handleLogin}>
-            <WelcomeText>Войти</WelcomeText>
-            <InputContainer>
-                <Input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                <Input type="password" placeholder="Пароль" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            </InputContainer>
-            <ButtonContainer>
-                <Button content="Войти" />
-            </ButtonContainer>
+        <MainContainer>
+            <form onSubmit={handleLogin}>
+                <WelcomeText>Войти</WelcomeText>
+                <Input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <Input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+
+                <ButtonContainer>
+                    <Button content="Войти"/>
+                </ButtonContainer>
+            </form>
         </MainContainer>
     );
 }
