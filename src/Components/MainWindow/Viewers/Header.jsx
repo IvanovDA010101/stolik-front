@@ -1,11 +1,12 @@
 import {
     HeaderImage,
-    HeaderNavigationButtons, SignButton,
+    HeaderNavigationButtons,
+    SignButton,
     SignButtons,
-    StyledHeader, StyledText
+    StyledHeader,
+    StyledText
 } from "../Styles/StyledComponents";
-import {Link} from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from "react-router-dom";
 
 export const Header = () => {
 
@@ -23,13 +24,11 @@ export const Header = () => {
 
     return (
         <StyledHeader>
-            <HeaderImage src={"images/img_imgbintablere.png"}/>
+            <HeaderImage src={"images/photo_2024-02-05_18-25-44.jpg"}/>
             <HeaderNavigationButtons>
                 <Link to={"/"}>
                     <StyledText style={{marginTop: "20px"}}>{welcomeText}</StyledText>
-                    {/*<HeaderButton>{textMain}</HeaderButton>*/}
                 </Link>
-                {/*<HeaderButton>{textContacts}</HeaderButton>*/}
             </HeaderNavigationButtons>
             <SignButtons>
                 <SignButton onClick={handleSignIn}>Войти</SignButton>

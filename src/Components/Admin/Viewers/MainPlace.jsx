@@ -14,7 +14,11 @@ export const MainPlace = () => {
         e.preventDefault();
 
         try {
+<<<<<<< HEAD
             const response = await fetch('http://reserveeasy.ru:8080/api/v1/admin/restaurants/', {
+=======
+            const response = await fetch('http://reserveeasy.ru:8080/api/v1/admin/restaurants', {
+>>>>>>> f46aa5fe6d000942c8b2e3bac9e63e4fc040d8d1
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

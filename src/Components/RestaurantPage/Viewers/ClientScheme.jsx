@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 import * as fabric from 'fabric';
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useParams} from "react-router";
 
 export const ClientScheme = () => {
@@ -35,13 +35,14 @@ export const ClientScheme = () => {
                     o.lockScalingY = true;
                     o.lockScalingFlip = true;
 
-                    // o.onSelect()
                     loadedCanvas.add(o);
                 });
 
                 loadedCanvas.on('selection:created', function (e) {
                     const tableId = e.selected[0]._objects[1].text
-                    navigate(`/restaurant/${id}/tables/${tableId}`)
+                    if (tableId !== undefined) {
+                        navigate(`/restaurant/${id}/tables/${tableId}`)
+                    }
                 });
                 console.log(loadedCanvas)
             } catch (error) {
@@ -57,7 +58,7 @@ export const ClientScheme = () => {
     // Отображение canvas
     return (
         <div>
-        <canvas ref={canvasRef}></canvas>
+            <canvas ref={canvasRef}></canvas>
         </div>)
 
 }
