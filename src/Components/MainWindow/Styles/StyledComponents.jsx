@@ -22,8 +22,30 @@ export const StyledEstablishmentList = styled.div`
 export const StyledComponents = styled.div`
     top: 479px;
     left: 41px;
-    border-radius: 5px;
+   
+    border-radius: 10px; /* Увеличьте радиус, чтобы закруглить углы */
+    background: rgba(255, 255, 255, 0.8); /* Измените альфа-значение, чтобы сделать фон менее видимым */
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.15);
+    padding: 10px; /* Добавьте отступ для контента */
+    overflow: hidden; /* Обрезаем излишки содержимого */
+    transition: background 0.3s ease; /* Добавьте плавный переход при изменении фона */
+    &:hover {
+        background: rgba(255, 255, 255, 0.95); /* Измените фон при наведении */
+    }
+    img {
+        width: 100%; /* Растягиваем изображение на всю ширину блока */ /* Закругляем верхние углы изображения */
+        border-radius: 10px;
+    }
+    //top: 479px;
+    //left: 41px;
+    //border-radius: 10px;
+    //background: rgba(255, 255, 255, 0.8);
+    //transition: background 0.3s ease;
+    //padding: 10px;
+    //box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.15);
+    //&:hover {
+    //    background: rgba(255, 255, 255, 0.95); /* Измените фон при наведении */
+    //}
 `
 
 export const StyledText = styled.text`
