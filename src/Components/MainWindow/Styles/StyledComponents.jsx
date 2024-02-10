@@ -4,38 +4,47 @@ export const StyledMainPlace = styled.div`
     gap: 41px;
     justify-content: flex-start;
     flex-direction: column;
-    width: 98%;
+    width: 100%;
     display: flex;
     margin-bottom: 263px;
+    
+    background: #FFFF;
+  
 `
 
 export const StyledEstablishmentList = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto auto auto auto;
     place-content: center;
-    grid-template-rows: auto auto; /* 2 строки */
-    border-radius: 5px;
-    background: #FFF;
+    grid-template-rows: auto auto auto auto; /* 2 строки */
+    
+    background: #FFFF;
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+    gap: 10px;
+    
 `
 
 export const StyledComponents = styled.div`
-    top: 479px;
-    left: 41px;
-   
-    border-radius: 10px; /* Увеличьте радиус, чтобы закруглить углы */
-    background: rgba(255, 255, 255, 0.8); /* Измените альфа-значение, чтобы сделать фон менее видимым */
-    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.15);
+    position: relative;
+    width: 100%; /* Чтобы элементы занимали всю доступную ширину */
+    max-width: 500px; /* Уменьшаем максимальную ширину блока */
+    border-radius: 50px; /* Увеличьте радиус, чтобы закруглить углы */
+    background: transparent;
+    /* Измените background: transparent;альфа-значение, чтобы сделать фон менее видимым */
+    text-decoration: none!important;
     padding: 10px; /* Добавьте отступ для контента */
-    overflow: hidden; /* Обрезаем излишки содержимого */
     transition: background 0.3s ease; /* Добавьте плавный переход при изменении фона */
+  
+   
+    /* Другие стили */
     &:hover {
         background: rgba(255, 255, 255, 0.95); /* Измените фон при наведении */
     }
     img {
         width: 100%; /* Растягиваем изображение на всю ширину блока */ /* Закругляем верхние углы изображения */
-        border-radius: 10px;
+        border-radius: 50px;
     }
+   
     //top: 479px;
     //left: 41px;
     //border-radius: 10px;
@@ -47,7 +56,38 @@ export const StyledComponents = styled.div`
     //    background: rgba(255, 255, 255, 0.95); /* Измените фон при наведении */
     //}
 `
-
+export const Title = styled.p`
+    font-weight: bold; // Делаем текст жирным
+    text-align: left; // Выравниваем текст по левому краю
+    color: black; // Задаем черный цвет текста
+     // Убираем подчеркивание ссылки
+    cursor: pointer; // Делаем курсор указателем, чтобы обозначить, что это кликабельный элемент
+    flex: 1; // Устанавливаем гибкое распределение текста
+    margin-top: 0.3em;
+    max-width: 100%; // Максимальная ширина текста для предотвращения излишнего увеличения при уменьшении масштаба
+    font-size: 1.5em;
+    &:hover {
+        text-decoration: none; // Убираем подчеркивание при наведении
+    }
+    
+`
+export const Description = styled.p`
+   
+    font-weight: bold; // Делаем текст жирным
+    text-align: center; // Выравниваем текст по левому краю
+    color: black; // Задаем черный цвет текста
+     // Убираем подчеркивание ссылки
+  
+    
+    cursor: pointer; // Делаем курсор указателем, чтобы обозначить, что это кликабельный элемент
+    flex: 1; // Устанавливаем гибкое распределение текста
+    // Максимальная ширина текста для предотвращения излишнего увеличения при уменьшении масштаба
+    font-size: 1em;
+    &:hover {
+        text-decoration: none; // Убираем подчеркивание при наведении
+    }
+    
+`
 export const StyledText = styled.text`
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
@@ -55,6 +95,7 @@ export const StyledText = styled.text`
     line-height: 48px;
     color: #333333;
     text-align: left;
+    
 `
 
 export const StyledHeader = styled.nav`

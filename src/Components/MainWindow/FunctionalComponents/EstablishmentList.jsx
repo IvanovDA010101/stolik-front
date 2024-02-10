@@ -1,6 +1,7 @@
-import {StyledComponents, StyledEstablishmentList} from "../Styles/StyledComponents";
+import {Description, StyledComponents, StyledEstablishmentList, Title} from "../Styles/StyledComponents";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import { Container, Row, Col } from 'react-bootstrap';
 
 export const EstablishmentList = ({}) => {
     const [establishments, setEstablishments] = useState([]);
@@ -32,16 +33,21 @@ export const EstablishmentList = ({}) => {
 
     return (
         <StyledEstablishmentList>
-            {establishments.map((establishment) => (
-                <Link to={`/restaurant/${establishment.id}`}>
-                    <StyledComponents key={establishment.id}>
-                        <img src={establishment.url} alt={establishment.name}/>
-                        <p>{establishment.name}</p>
-                        <p>{establishment.description}</p>
-                        <p>{establishment.address}</p>
-                    </StyledComponents>
-                </Link>
-            ))}
-        </StyledEstablishmentList>
+    {establishments.map((establishment) => (
+        <Link style={{ textDecoration: 'none' }} to={`/restaurant/${establishment.id}`}>
+            <StyledComponents key={establishment.id}>
+                <img src={establishment.url} alt={establishment.name}/>
+                <Title>{establishment.name}</Title>
+                <Description>{establishment.description}</Description>
+                <p>{establishment.address}</p>
+            </StyledComponents>
+        </Link>
+    ))}
+</StyledEstablishmentList>
     );
+
+
+
 }
+
+
