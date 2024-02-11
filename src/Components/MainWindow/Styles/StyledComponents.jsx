@@ -27,7 +27,7 @@ export const StyledEstablishmentList = styled.div`
 export const StyledComponents = styled.div`
     position: relative;
     width: 100%; /* Чтобы элементы занимали всю доступную ширину */
-    max-width: 500px; /* Уменьшаем максимальную ширину блока */
+    max-width: 300px; /* Уменьшаем максимальную ширину блока */
     border-radius: 50px; /* Увеличьте радиус, чтобы закруглить углы */
     background: transparent;
     /* Измените background: transparent;альфа-значение, чтобы сделать фон менее видимым */
