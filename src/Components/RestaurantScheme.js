@@ -1,5 +1,6 @@
 // import '../App.css';
 import * as fabric from 'fabric';
+
 import {useEffect, useRef} from "react";
 import {useParams} from "react-router";
 
@@ -122,26 +123,65 @@ export const MyFabricComponent = () => {
   }, [canvas, width, height]);
 
   function addRect() {
-    const o = new fabric.Rect({
-      width: 60,
-      height: 60,
-      fill: tableFill,
-      stroke: tableStroke,
-      strokeWidth: 2,
-      shadow: tableShadow,
-      originX: 'center',
-      originY: 'center',
-      centeredRotation: true,
-      snapAngle: 45,
-      idInDB: objId.current.toString()
-    });
-    const t = new fabric.IText(objId.current.toString(), textOptions);
-    const g = new fabric.Group([o, t], gOptions);
+
+    fabric.Image.fromURL(
+        'https://cdn2.iconfinder.com/data/icons/furniture-1-1-1/1024/round_table3-100.png',
+        function (img) {
+          img.set({
+            width: 0,
+            height: 0,
+            scaleX: 0,
+            scaleY: 0,
+            originX: 'center',
+            originY: 'center',
+            centeredRotation: true,
+            idInDB: objId.current.toString(),
+          });
+
+
+        }
+    ).then(r => {
+      const t = new fabric.IText(objId.current.toString(), textOptions);
+    const g = new fabric.Group([r, t], gOptions);
+
     canvas.current.add(g);
-    canvas.current.requestRenderAll();
     canvas.current.setActiveObject(g);
     objId.current++;
-    return g;
+    return g});
+      // const o = new fabric.Rect({
+      //   width: 60,
+      //   height: 60,
+      //   fill: tableFill,
+      //   stroke: tableStroke,
+      //   strokeWidth: 2,
+      //   shadow: tableShadow,
+      //   originX: 'center',
+      //   originY: 'center',
+      //   centeredRotation: true,
+      //   snapAngle: 45,
+      //   idInDB: objId.current.toString(),
+      //
+      // });
+      //
+      // const t = new fabric.IText(objId.current.toString(), textOptions);
+      // const g = new fabric.Group([o,  t], gOptions);
+      // canvas.current.renderAll()
+      // canvas.current.add(g);
+      // canvas.current.setActiveObject(g);
+      // objId.current++;
+
+
+
+
+
+    // const t = new fabric.IText(objId.current.toString(), textOptions);
+    // const g = new fabric.Group([o, t], gOptions);
+    // canvas.current.add(g);
+    //
+    // canvas.current.requestRenderAll();
+    // canvas.current.setActiveObject(g);
+    // objId.current++;
+    // return g;
   }
 
   function addCircle() {
