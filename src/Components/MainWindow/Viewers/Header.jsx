@@ -7,6 +7,8 @@ import {
     StyledText
 } from "../Styles/StyledComponents";
 import {Link, useNavigate} from "react-router-dom";
+import {useContext} from "react";
+import {AuthContext} from "../../Context/AuthProvider";
 
 export const Header = () => {
 
@@ -14,12 +16,18 @@ export const Header = () => {
 
     const navigate = useNavigate();
 
+    const {token, logout} = useContext(AuthContext)
+
     const handleSignIn = () => {
-            navigate("/login");
+        navigate("/login");
     };
 
     const handleSignUp = () => {
         navigate("/register")
+    }
+    const handleLogOut = () => {
+        logout()
+        navigate("/")
     }
 
     return (
@@ -30,10 +38,14 @@ export const Header = () => {
             </Link>
             <HeaderNavigationButtons>
             </HeaderNavigationButtons>
-            <SignButtons>
-                <SignButton onClick={handleSignIn}>Войти</SignButton>
-                <SignButton onClick={handleSignUp}>Регистрация</SignButton>
-            </SignButtons>
+            {!token ?
+                <SignButtons>
+                    <SignButton onClick={handleSignIn}>Войти</SignButton>
+                    <SignButton onClick={handleSignUp}>Регистрация</SignButton>
+                </SignButtons> :
+                <SignButtons>
+                    <SignButton onClick={handleLogOut}>Выйти</SignButton>
+                </SignButtons>}
         </StyledHeader>
     )
 }

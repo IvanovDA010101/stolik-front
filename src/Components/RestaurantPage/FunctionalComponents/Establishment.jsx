@@ -1,7 +1,8 @@
 import {BookingButton, Restaurant, RestaurantInfo, StyledImage} from "../Styles/StyledComponents";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useParams} from "react-router";
 import {ReactSVG} from "react-svg";
+import {AuthContext} from "../../Context/AuthProvider";
 
 export const Establishment = () => {
     const [establishment, setEstablishment] = useState([]);
@@ -40,7 +41,6 @@ export const Establishment = () => {
                     <p>{establishment.name}</p>
                     <p>{establishment.description}</p>
                     <p>{establishment.address}</p>
-                    {/*<BookingButton>Забронировать</BookingButton>*/}
                 </RestaurantInfo>
             </Restaurant>
         </>

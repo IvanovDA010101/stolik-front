@@ -9,24 +9,27 @@ import {BookingService} from "./Components/RestaurantPage/Viewers/BookingService
 import {SignUp} from "./Components/SignUp/MainRegister";
 import {SignIn} from "./Components/SignIn/SignIn";
 import {Admin} from "./Components/Admin/Admin";
+import {AuthContext, AuthProvider} from "./Components/Context/AuthProvider";
 
 
 function App() {
-  return (
-    <div className="App">
-        <Header/>
-        <Routes>
-            <Route path="/" element={<Main/>}/>
-            <Route path="/restaurant/:id" element={<RestaurantPageMain/>}/>
-            <Route path="/restaurant/:id/tables/:tableId" element={<BookingService/>}/>
-            <Route path="/scheme/:id" element={<MyFabricComponent/>}/>
-            <Route path="/admin" element={<Admin/>}/>
-            <Route path="/login" element={<SignIn/>}/>
-            <Route path="/register" element={<SignUp/>}/>
-        </Routes>
-        <Footer />
-    </div>
-  );
+    return (
+        <div className="App">
+            <AuthProvider>
+                <Header/>
+                <Routes>
+                    <Route path="/" element={<Main/>}/>
+                    <Route path="/restaurant/:id" element={<RestaurantPageMain/>}/>
+                    <Route path="/restaurant/:id/tables/:tableId" element={<BookingService/>}/>
+                    <Route path="/scheme/:id" element={<MyFabricComponent/>}/>
+                    <Route path="/admin" element={<Admin/>}/>
+                    <Route path="/login" element={<SignIn/>}/>
+                    <Route path="/register" element={<SignUp/>}/>
+                </Routes>
+                <Footer/>
+            </AuthProvider>
+        </div>
+    );
 }
 
 export default App;
