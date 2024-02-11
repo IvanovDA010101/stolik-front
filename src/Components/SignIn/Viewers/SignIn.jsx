@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Button, ButtonContainer, Input, InputContainer, MainContainer, WelcomeText} from "../Styles/StyledComponents";
+import {AuthContext} from "../../Context/AuthProvider";
 
 export const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     let navigate = useNavigate();
-
+    const {login} = useContext(AuthContext)
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -27,7 +28,8 @@ export const Login = () => {
             if (!response.ok) {
                 alert('Login Failed!')
             } else {
-                console.log('Login successful:');
+                const data = await response.json()
+                login(data.token)
                 navigate('/');
             }
         } catch (error) {

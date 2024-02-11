@@ -1,11 +1,13 @@
-import {useState, useEffect, useRef} from 'react';
+import {useState, useEffect, useRef, useContext} from 'react';
 import * as fabric from 'fabric';
 import {useNavigate} from "react-router-dom";
 import {useParams} from "react-router";
+import {AuthContext} from "../../Context/AuthProvider";
 
 export const ClientScheme = () => {
     const canvasRef = useRef(null);
     const navigate = useNavigate()
+    let {token} = useContext(AuthContext)
 
     const params = useParams()
     const id = params.id
@@ -54,11 +56,13 @@ export const ClientScheme = () => {
         fetchData(); // Загрузка данных при монтировании компонента
     }, []);
 
-
+    // console.log(token)
+    // token=null
     // Отображение canvas
     return (
         <div>
-            <canvas ref={canvasRef}></canvas>
+            {token ?
+            <canvas ref={canvasRef}></canvas> : <p>Сначала авторизируйтесь</p>}
         </div>)
 
 }
