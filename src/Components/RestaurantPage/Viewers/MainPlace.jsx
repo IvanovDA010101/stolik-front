@@ -9,14 +9,12 @@ import {useParams} from "react-router";
 export const MainPlace = () => {
     const [date, setDate] = useState(null)
     const [time, setTime] = useState(null)
-    const [tablesReserved, setTables] = useState([])
+    const [tablesReserved, setTables] = useState([-1])
 
-    const setTablesClick=(tableId) => {
-        const tables = []
-        tables.push(tableId)
-        setTables(tables)
-    }
+    const setTablesClick = (tableId) => {
 
+        setTables((tablesReserved) => [...tablesReserved, tableId]);
+    };
 
     const handleDatePricker = (val) => {
         const date = new Date(val);
@@ -41,31 +39,54 @@ export const MainPlace = () => {
     const id = params.id
     const fetchData = async () => {
         try {
-            const formattedDate = date + 'T' + time + ':00' + '.00'; // Конкатенация даты и времени в нужном формате
-            const url = `http://reserveeasy.ru:8080/api/v1/bookings/restaurants/${id}?datetime=${formattedDate}`;
-            const response = await fetch(url, {
-                headers: {
-                    'accept': '*/*'
+            if (date && time) { // Проверяем, что дата и время установлены
+                const formattedDate = `${date}T${time}:00.00`;
+                const url = `http://reserveeasy.ru:8080/api/v1/bookings/restaurants/${id}?datetime=${formattedDate}`;
+                const response = await fetch(url, {
+                    headers: {
+                        'accept': '*/*'
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
-            });
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+                const data = await response.json();
+
+
+
+
+                setTables([])
+                data.forEach(obj => {
+
+                    const tableId = obj.tableId;
+                    setTablesClick(tableId);
+                });
+
+                console.log(tablesReserved);
             }
-            const data = await response.json();
-            data.forEach(obj => {
-                const tableId = obj.tableId;
-                setTablesClick(tableId)
-            });
-            // setTables(data.)
-            console.log(tablesReserved);
-            // return data
+            // const formattedDate = date + 'T' + time + ':00' + '.00'; // Конкатенация даты и времени в нужном формате
+            // const url = `http://reserveeasy.ru:8080/api/v1/bookings/restaurants/${id}?datetime=${formattedDate}`;
+            // const response = await fetch(url, {
+            //     headers: {
+            //         'accept': '*/*'
+            //     }
+            // });
+            // if (!response.ok) {
+            //     throw new Error('Network response was not ok');
+            // }
+            // const data = await response.json();
+            // data.forEach(obj => {
+            //     const tableId = obj.tableId;
+            //     setTablesClick(tableId)
+            // });
+            // // setTables(data.)
+            // console.log(tablesReserved);
+            // // return data
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     }
-    const reload = () => {
-        this.render()
-    }
+
 
     useEffect(() => {
         fetchData()
@@ -104,7 +125,7 @@ export const MainPlace = () => {
                     }}
                 />
             </div>
-            <ClientScheme tablesReserved = {tablesReserved}/>
+            <ClientScheme tablesReserved={tablesReserved} date={date} time={time}/>
             <TikTokVideoGallery/>
         </>
     )
