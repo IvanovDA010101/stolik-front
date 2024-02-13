@@ -35,7 +35,7 @@ export const BookingService = () => {
             }
 
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             // Возможно, здесь вам захочется что-то делать с возвращенными данными
         } catch (error) {
             console.error('Error sending data to the backend:', error);
@@ -49,7 +49,7 @@ export const BookingService = () => {
             userId: 1,
             time : `${selectedDate}T18:17:35.387Z` //"2024-02-04T22:17:35.387Z"
         }
-        console.log(json)
+        // console.log(json)
         sendDataToBackend(JSON.stringify(json));
         navigate("/")
     };

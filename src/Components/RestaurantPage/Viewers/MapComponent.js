@@ -12,7 +12,7 @@ function MapComponent() {
             const response = await axios.get(`https://geocode-maps.yandex.ru/1.x/?apikey=${apiKey}&format=json&geocode=${address}`);
             const coords = response.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ');
             setCoordinates([parseFloat(coords[1]), parseFloat(coords[0])]);
-            console.log(`${apiKey}`)
+            // console.log(`${apiKey}`)
         } catch (error) {
             console.error('Error fetching data:', error);
         }
