@@ -13,7 +13,8 @@ export const MainContainer = styled.div`
     backdrop-filter: blur(8.5px);
     -webkit-backdrop-filter: blur(8.5px);
     border-radius: 10px;
-    color: #BDA1EC;
+    //color: #BDA1EC;
+    color: rgba(238, 31, 31, 0.8);
     text-transform: uppercase;
     letter-spacing: 0.4rem;
     margin: 0 auto;
@@ -93,12 +94,14 @@ export const StyledInput = styled.input`
   padding: 1rem;
   border: none;
   outline: none;
-  color: #BDA1EC;
+  //color: #BDA1EC;
+  color: rgba(238, 31, 31, 0.8);
   font-size: 1rem;
   font-weight: bold;
   &:focus {
     display: inline-block;
-    box-shadow: 0 0 0 0.2rem #BDA1EC;
+    //box-shadow: 0 0 0 0.2rem #BDA1EC;
+    box-shadow: 0 0 0 0.2rem rgba(238, 31, 31, 0.8);
     backdrop-filter: blur(12rem);
     border-radius: 2rem;
   }
@@ -114,7 +117,8 @@ export const Button = ({ content }) => {
 }
 
 export const StyledButton = styled.button`
-  background: linear-gradient(to right, #BDA1EC 0%, #BDA1EC 79%);
+  //background: linear-gradient(to right, #BDA1EC 0%, #BDA1EC 79%);
+  background: rgba(238, 31, 31, 0.8);
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   width: 65%;

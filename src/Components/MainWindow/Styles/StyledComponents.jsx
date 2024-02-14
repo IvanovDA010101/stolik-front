@@ -110,8 +110,9 @@ export const StyledHeader = styled.nav`
 `
 
 export const HeaderImage = styled.img`
-    border-radius: 35%;
-    width: 200px;
+    border-radius: 10%;
+    //width: 200px;
+    width: auto;
     height: 60px;
 
 `
@@ -144,7 +145,8 @@ export const SignButton = styled.button`
     margin-right: 20px;
     margin-top: 20px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #BDA1EC;
+    //background-color: #BDA1EC;
+    background-color: rgba(238, 31, 31, 0.8);
     color: #FFFFFF;
 
 

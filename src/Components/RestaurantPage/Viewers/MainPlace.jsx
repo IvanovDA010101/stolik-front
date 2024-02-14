@@ -38,6 +38,7 @@ export const MainPlace = () => {
     const params = useParams()
     const id = params.id
     const fetchData = async () => {
+        if (date!=null && time!=null)
         try {
             if (date && time) { // Проверяем, что дата и время установлены
                 const formattedDate = `${date}T${time}:00.00`;

@@ -2,21 +2,25 @@ import styled from "styled-components";
 
 export const Restaurant = styled.div`
     display: flex;
-    flex-direction: column;
+    //flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    //align-items: center;
+    //height: 100vh;
     background-color: #f2f2f2;
 `
 
 export const StyledImage = styled.img`
     max-width: 100%;
     height: auto;
+    border-radius: 10%;
 `
 
 export const RestaurantInfo = styled.div`
-    text-align: center;
-    margin: 20px 0;
+    //text-align: center;
+    //margin: 20px 0;
+    margin-left: auto;
+    margin-bottom: auto;
+    margin-right: auto;
 `
 
 export const BookingButton = styled.button`

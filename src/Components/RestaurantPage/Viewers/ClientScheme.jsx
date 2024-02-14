@@ -8,8 +8,6 @@ import {SignButton} from "../../MainWindow/Styles/StyledComponents";
 export const ClientScheme = ({ tablesReserved, date, time }) => {
     const canvasRef = useRef(null);
     const navigate = useNavigate()
-    const isFetching = useRef(false);
-    const [loading, setLoading] = useState(false);
     let {token} = useContext(AuthContext)
 
     const tables = tablesReserved
@@ -20,67 +18,59 @@ export const ClientScheme = ({ tablesReserved, date, time }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            if(!isFetching.current) {
-                isFetching.current = true;
-
-
-                try {
-                    if (canvas) {
-                        const response = await fetch(`http://45.151.144.194:8080/api/v1/restaurants/${id}/tables`, {
-                            headers: {
-                                'accept': '*/*'
-                            }
-                        });
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
+            try {
+                if (canvas) {
+                    const response = await fetch(`http://45.151.144.194:8080/api/v1/restaurants/${id}/tables`, {
+                        headers: {
+                            'accept': '*/*'
                         }
-
-                        const data = await response.json();
-                        const jsonParse = JSON.parse(data.file);
-                        const objects = await fabric.util.enlivenObjects(jsonParse.objects);
-
-                        canvas.clear()
-
-                        objects.forEach(function (o) {
-
-                            console.log("Tables = " + tables.includes(3))
-
-                            if (tables.includes(parseInt(o._objects[1].text))) {
-                                o.selectable = false;
-                                o._objects[0].fill = 'red';
-                            } else {
-                                o.selectable = true;
-                                o._objects[0].fill = 'green';
-                            }
-
-                            o.fill = 'rgba(245, 40, 145, 0.8)';
-                            o.lockMovementX = true;
-                            o.lockMovementY = true;
-                            o.lockRotation = true;
-                            o.lockScalingX = true;
-                            o.lockScalingY = true;
-                            o.lockScalingFlip = true;
-
-                            canvas.add(o);
-                        });
-
-                        canvas.renderAll();
-
-                        canvas.on('selection:created', function (e) {
-                            const tableId = e.selected[0]._objects[1].text;
-                            if (tableId !== undefined) {
-                                navigate(`/restaurant/${id}/tables/${tableId}`);
-                            }
-                        });
+                    });
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
                     }
 
+                    const data = await response.json();
+                    const jsonParse = JSON.parse(data.file);
+                    const objects = await fabric.util.enlivenObjects(jsonParse.objects);
 
-                } catch (error) {
-                    console.error('Error fetching data:', error);
-                } finally {
-                    isFetching.current = false
+                    canvas.clear()
+
+                    objects.forEach(function (o) {
+
+                        console.log("Tables = " + tables.includes(3))
+
+                        if (tables.includes(parseInt(o._objects[1].text))) {
+                            o.selectable = false;
+                            o._objects[0].fill = 'red';
+                        } else {
+                            o.selectable = true;
+                            o._objects[0].fill = 'green';
+                        }
+
+                        o.fill = 'rgba(245, 40, 145, 0.8)';
+                        o.lockMovementX = true;
+                        o.lockMovementY = true;
+                        o.lockRotation = true;
+                        o.lockScalingX = true;
+                        o.lockScalingY = true;
+                        o.lockScalingFlip = true;
+
+                        canvas.add(o);
+                    });
+
+                    canvas.renderAll();
+
+                    canvas.on('selection:created', function (e) {
+                        const tableId = e.selected[0]._objects[1].text;
+                        if (tableId !== undefined) {
+                            navigate(`/restaurant/${id}/tables/${tableId}`);
+                        }
+                    });
                 }
+            } catch (error) {
+                console.error('Error fetching data:', error);
             }
+
             }
 
         fetchData();
