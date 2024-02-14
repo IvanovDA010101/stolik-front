@@ -41,8 +41,8 @@ const TikTokVideoGallery = () => {
         <div style={{ height: '100vh', overflow: 'hidden', position: 'relative' }}>
             {videos.length > 0 &&
                 videos.map((video, index) => {
-                    console.log(index)
-                    console.log(currentVideoIndex)
+                    // console.log(index)
+                    // console.log(currentVideoIndex)
                     return (
                         <div key={index} style={{
                             display: index >= currentVideoIndex && index < currentVideoIndex + 1 ? 'block' : 'none',

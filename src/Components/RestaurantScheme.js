@@ -16,7 +16,7 @@ export const MyFabricComponent = () => {
   const height = grid * 30;
   const backgroundColor = '#f8f8f8';
   const lineStroke = '#ebebeb';
-  const tableFill = 'rgba(150, 111, 51, 0.7)';
+  const tableFill = 'rgba(196, 185, 185, 1)';
   const tableStroke = '#694d23';
   const tableShadow = 'rgba(0, 0, 0, 0.4) 3px 3px 7px';
   const chairFill = 'rgba(67, 42, 4, 0.7)';
@@ -55,22 +55,6 @@ export const MyFabricComponent = () => {
         preserveObjectStacking: true,
         selection: true,
       });
-
-      for (let i = 0; i < (canvas.current.height / grid); i++) {
-        const lineX = new fabric.Line([0, i * grid, canvas.current.height, i * grid], {
-          stroke: lineStroke,
-          selectable: false,
-          type: 'line'
-        });
-        const lineY = new fabric.Line([i * grid, 0, i * grid, canvas.current.height], {
-          stroke: lineStroke,
-          selectable: false,
-          type: 'line'
-        });
-        sendLinesToBack();
-        canvas.current.add(lineX);
-        canvas.current.add(lineY);
-      }
 
       canvas.current.on('object:moving', function (e) {
         snapToGrid(e.target);
@@ -124,51 +108,51 @@ export const MyFabricComponent = () => {
 
   function addRect() {
 
-    fabric.Image.fromURL(
-        'https://cdn2.iconfinder.com/data/icons/furniture-1-1-1/1024/round_table3-100.png',
-        function (img) {
-          img.set({
-            width: 0,
-            height: 0,
-            scaleX: 0,
-            scaleY: 0,
-            originX: 'center',
-            originY: 'center',
-            centeredRotation: true,
-            idInDB: objId.current.toString(),
-          });
+    // fabric.Image.fromURL(
+    //     'https://cdn2.iconfinder.com/data/icons/furniture-1-1-1/1024/round_table3-100.png',
+    //     function (img) {
+    //       img.set({
+    //         width: 0,
+    //         height: 0,
+    //         scaleX: 0,
+    //         scaleY: 0,
+    //         originX: 'center',
+    //         originY: 'center',
+    //         centeredRotation: true,
+    //         idInDB: objId.current.toString(),
+    //       });
+    //
+    //
+    //     }
+    // ).then(r => {
+    //   const t = new fabric.IText(objId.current.toString(), textOptions);
+    // const g = new fabric.Group([r, t], gOptions);
+    //
+    // canvas.current.add(g);
+    // canvas.current.setActiveObject(g);
+    // objId.current++;
+    // return g});
+      const o = new fabric.Rect({
+        width: 60,
+        height: 60,
+        fill: tableFill,
+        stroke: tableStroke,
+        strokeWidth: 2,
+        shadow: tableShadow,
+        originX: 'center',
+        originY: 'center',
+        centeredRotation: true,
+        snapAngle: 45,
+        idInDB: objId.current.toString(),
 
+      });
 
-        }
-    ).then(r => {
       const t = new fabric.IText(objId.current.toString(), textOptions);
-    const g = new fabric.Group([r, t], gOptions);
-
-    canvas.current.add(g);
-    canvas.current.setActiveObject(g);
-    objId.current++;
-    return g});
-      // const o = new fabric.Rect({
-      //   width: 60,
-      //   height: 60,
-      //   fill: tableFill,
-      //   stroke: tableStroke,
-      //   strokeWidth: 2,
-      //   shadow: tableShadow,
-      //   originX: 'center',
-      //   originY: 'center',
-      //   centeredRotation: true,
-      //   snapAngle: 45,
-      //   idInDB: objId.current.toString(),
-      //
-      // });
-      //
-      // const t = new fabric.IText(objId.current.toString(), textOptions);
-      // const g = new fabric.Group([o,  t], gOptions);
-      // canvas.current.renderAll()
-      // canvas.current.add(g);
-      // canvas.current.setActiveObject(g);
-      // objId.current++;
+      const g = new fabric.Group([o,  t], gOptions);
+      canvas.current.renderAll()
+      canvas.current.add(g);
+      canvas.current.setActiveObject(g);
+      objId.current++;
 
 
 

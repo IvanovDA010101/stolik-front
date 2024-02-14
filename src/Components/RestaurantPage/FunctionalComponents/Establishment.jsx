@@ -20,7 +20,7 @@ export const Establishment = () => {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             setEstablishment(data);
             // return data
         } catch (error) {
@@ -38,7 +38,7 @@ export const Establishment = () => {
             <Restaurant key={establishment.id}>
                 <StyledImage src={establishment.url} alt={establishment.name}/>
                 <RestaurantInfo>
-                    <p>{establishment.name}</p>
+                    <h2>{establishment.name}</h2>
                     <p>{establishment.description}</p>
                     <p>{establishment.address}</p>
                 </RestaurantInfo>
